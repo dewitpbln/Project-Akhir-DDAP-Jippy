@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background-color: #fff;
+    color: #333;
+    line-height: 1.6;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar .logo img {
+    height: 115px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.btn-signup {
+    background-color: #4dbfff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(
+        to bottom,
+        #fff 0%,
+        #ffe6ec 30%,
+        #ffe6ec 70%,
+        #fff 100%
+    );
+    padding: 60px 50px;
+    flex-wrap: wrap;
+    width: 1440px;
+    height: 532px;
+}
+
+.hero-text {
+    max-width: 500px;
+}
+
+.hero-text .subtitle {
+    font-size: 18px;
+    color: #ff5588;
+    margin-bottom: 10px;
+}
+
+.hero-text h1 {
+    font-size: 36px;
+    color: #d70050;
+    margin-bottom: 20px;
+}
+
+.btn-get-started {
+    background-color: #F65C89;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hero-img img {
+    max-width: 727px;
+}
+
+.intro {
+    text-align: center;
+    padding: 40px 30px;
+    max-width: 800px;
+    margin: auto;
+}
+
+.intro h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding: 40px 20px;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.features .feature img {
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.features .feature p {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.transparant-pricing {
+    width: 304px;
+    height: 304px;
+    position: absolute;
+    top: 1276px;
+    left: 146px;
+}
+
+.main-container {
+    width: 1440px;
+    height: 1706px;
+    background-color: #fff;
+    margin: 0 auto; /* Center horizontally */
+    position: relative;
+    overflow: hidden;
+}
