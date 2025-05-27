@@ -9,6 +9,7 @@ body {
     background-color: #fff;
     color: #333;
     line-height: 1.6;
+    border: none;
 }
 
 .navbar {
@@ -17,7 +18,7 @@ body {
     align-items: center;
     padding: 18px 32px;
     background-color: #fff;
-    border-bottom: 2px solid #000;
+    border: none;
     box-shadow: none;
     width: 100%;
     position: relative;
@@ -66,67 +67,86 @@ body {
 
 /* --- HERO SECTION --- */
 .hero {
-     display: flex;
-    align-items: center;
-    justify-content: space-between;
     background: linear-gradient(
         to bottom,
         #fff 0%,
-        #ffe6ec 30%,
-        #ffe6ec 70%,
-        #fff 100%
+        #ffe6f0 80%,
+        #ffe6f0 100%
     );
-    padding: 60px 50px;
-    flex-wrap: wrap;
-    width: 1440px;
-    height: 532px;
+    min-height: 370px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    width: 100%;
+    border-bottom: none; 
+    overflow: hidden;
 }
 
 .hero-content {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1440px;
     margin: 0 auto;
+    height: 100%;
+    position: relative;
 }
 
 .hero-text {
     flex: 1;
-    padding-left: 60px;
+    padding-left: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
 }
 
 .hero-text .subtitle {
-    font-size: 20px;
-    color: #e05c8d;
-    margin-bottom: 10px;
+    font-size: 2rem;      /* sekitar 32px */
+    color: #f06292;
+    margin-bottom: 14px;
+    font-weight: 500;
 }
 
 .hero-text .say-less {
-    font-size: 18px;
-    color: #e05c8d;
-    margin-bottom: 0;
+    font-size: 2rem;      /* sekitar 32px */
+    color: #f06292;
+    margin-bottom: 12px;
+    font-weight: 600;     /* lebih bold dari sebelumnya */
 }
 
 .hero-text .main-title {
-    font-size: 2rem;
+    font-size: 2.4rem;    /* sekitar 38px */
     font-weight: bold;
-    color: #e05c8d;
+    color: #f06292;
     display: block;
-    margin-bottom: 20px;
+    margin-bottom: 12px;   /* kurangi jarak bawah */
+    line-height: 1.1;      /* rapatkan antar baris */
 }
 
 .btn-get-started {
-    background-color: #ff96b5;
-    color: white;
-    padding: 12px 32px;
-    border-radius: 8px;
+    background-color: #f06292;
+    color: #fff;
+    width: 260px;
+    height: 56px;
+    padding: 0;
+    border-radius: 16px;
     text-decoration: none;
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     border: none;
-    margin-top: 18px;
-    display: inline-block;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 18px rgba(240,98,146,0.15);
+    transition: background 0.2s;
+}
+
+.btn-get-started:hover {
+    background: #e05c8d;
 }
 
 .hero-img {
@@ -138,8 +158,8 @@ body {
 }
 
 .hero-img img {
-    width: 763px;
-    height: 727px;
+    width: 500px;
+    height: 500px;
     object-fit: contain;
     max-width: 100%;
 }
