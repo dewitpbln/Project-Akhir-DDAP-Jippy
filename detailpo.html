@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Detail Produk - Jippy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white font-sans text-gray-800">
+
+  <!-- Header -->
+    <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+      <img src="img/LOGO.png" alt="Jippy" class="w-[64px] h-[64px]">
+      <nav class="flex gap-10 items-center">
+        <a href="#" class="text-black font-medium">Dashboard</a>
+        <a href="#" class="bg-[#FDE7A1] px-4 py-1 rounded-lg font-medium border border-black">Pre-Order</a>
+        <a href="#" class="text-black font-medium">My Order</a>
+        <a href="#" class="text-black font-medium">Live Chat</a>
+      </nav>
+      <div class="flex gap-4 items-center">
+        <button><img src="img/notif.png" alt="Notifikasi" class="w-[22px]"></button>
+        <button><img src="img/profil.png" alt="Akun" class="w-[24px]"></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="container mx-auto px-4 pt-6 text-lg text-black">
+    Produk Pre-Order &gt; <span class="font-semibold">Detail Produk</span>
+  </div>
+
+  <!-- Main Content -->
+  <main class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 p-4 lg:p-8">
+
+    <!-- Gambar dan Detail Ukuran -->
+    <div class="overflow-hidden">
+      <img src="img/floraldetail.png" alt="Floral Dress" class="rounded-lg w-full object-cover ">
+      <div class="flex justify-between gap-2 mt-4">
+        <img src="img/floraldetail1.png" class="rounded-md w-32 h-32" alt="Thumb 1">
+        <img src="img/floraldetail2.png" class="rounded-md w-32 h-32" alt="Thumb 2">
+        <img src="img/floraldetail3.png" class="rounded-md w-32 h-32" alt="Thumb 3">
+      </div>
+
+      <div class="bg-blue-50 p-4 mt-6 rounded-md text-sm">
+        <p class="font-bold mb-2">Detail Ukuran (cm):</p>
+        <p>
+          <b>S :</b> 29.5 × 60 × 27 × 18.5 × 40 × 12 × 24 × 53<br>
+          <b>M :</b> 31.5 × 62 × 29 × 19.5 × 41 × 12.5 × 25 × 54.5<br>
+          <b>L :</b> 33.5 × 64 × 31 × 20.5 × 42 × 13 × 26 × 56<br>
+          <b>XL :</b> 35.5 × 66 × 33 × 21.5 × 43 × 13.5 × 27 × 57.5
+        </p>
+      </div>
+    </div>
+
+    <!-- Informasi Produk -->
+    <div class="bg-[#FFE8EF] rounded-lg py-6 h-fit">
+      <div class="flex justify-between items-start px-6">
+        <h2 class="text-2xl font-bold">Floral Dress</h2>
+        <span class="text-sm text-gray-600">Close PO: 2 September 2025</span>
+      </div>
+
+      <div class="flex items-center gap-2 mt-2 px-6">
+        <div class="flex text-yellow-400 text-xl">★★★★★</div>
+        <span class="text-sm text-black">(4.9)</span>
+        <a href="#" class="text-[#5ABFEF] text-sm">531 Reviews</a>
+        <span class="text-sm text-[#F65C89]">753 Sold</span>
+      </div>
+
+      <p class="text-xl font-semibold text-black mt-4 px-6">IDR 175.900</p>
+
+      <div class="mt-4 text-sm px-6">
+        <p class="font-semibold">Detail Produk:</p>
+        <ul class="list-disc list-inside mt-2 space-y-1">
+          <li>Mini dress lengan pendek</li>
+          <li>Square neck</li>
+          <li>Puff sleeves</li>
+          <li>Smock details</li>
+          <li>Regular fit</li>
+          <li>Material: Cotton</li>
+          <li>Model menggunakan ukuran S</li>
+        </ul>
+      </div>
+
+      <div class="border-t border-[#BCBCBC] my-6"></div>
+
+      <div class="text-sm px-6">
+        <span class="flex gap-2"><p class="font-bold mb-1">Warna:</p><p>Creamy Beige</p></span>
+        <div class="w-6 h-6 border border-black rounded bg-[#FBFBFB] mt-2 "></div>
+      </div>
+
+      <!-- Ukuran -->
+      <div class="mt-4 text-sm px-6">
+        <p class="font-semibold mb-1">Ukuran:</p>
+        <div class="grid grid-cols-4 gap-2 w-40">
+          <button class="size-btn py-1 px-2 border border-gray-400 rounded ">S</button>
+          <button class="size-btn py-1 px-2 border border-gray-400 rounded">M</button>
+          <button class="size-btn py-1 px-2 border border-gray-400 rounded">L</button>
+          <button class="size-btn py-1 px-2 border border-gray-400 rounded">XL</button>
+        </div>
+      </div>
+
+      <!-- Jumlah -->
+      <div class="mt-4 text-sm px-6">
+        <p class="font-semibold mb-1">Jumlah:</p>
+        <div class="flex items-center gap-2">
+          <button id="minus-btn" class="w-8 h-8 bg-white border rounded text-lg">−</button>
+          <span id="qty">1</span>
+          <button id="plus-btn" class="w-8 h-8 bg-white border rounded text-lg">+</button>
+        </div>
+      </div>
+
+      <div class="border-t border-[#BCBCBC] my-6"></div>
+
+      <!-- Total -->
+      <div class="mt-6 text-lg font-semibold px-6 flex justify-between">
+        Total: <span id="total-price" class="text-black">IDR 175.900</span>
+      </div>
+      <div class="px-6">
+        <button class="w-full mt-4 bg-[#F65C89] text-white py-2 rounded font-semibold hover:bg-[#FAABC2]">
+          Pre-Order Sekarang
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!--Footer-->
+  <footer class="bg-[#FF96B5] py-4">
+    <div class="container mx-auto text-sm text-white">
+      <div class="flex justify-between items-center">
+        <div>
+            <img src="img/LOGO.png" alt="Jippy" class="w-[32px] h-[32px]">
+            <p class="mt-4 text-xs">© Jippy 2025 - All Rights Reserved</p>
+        </div>
+        <div class="flex flex-col items-end space-y-3">
+            <span class="flex gap-7 text-right text-md">
+                <p>Home</p>
+                <p>About Us</p>
+                <p>Contact Person</p>
+            </span>
+            <span class="flex gap-4 text-xs">
+                <p>Terms of Use</p>
+                <p>Privacy Policy</p>
+                <p>Agreement</p>
+            </span>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Pilih Ukuran
+      const sizeButtons = document.querySelectorAll(".size-btn");
+      sizeButtons.forEach(button => {
+        button.addEventListener("click", () => {
+          sizeButtons.forEach(btn => btn.classList.remove("bg-[#FDB1C7]", "text-black"));
+          button.classList.add("bg-[#FDB1C7]", "text-black");
+        });
+      });
+
+
+      const minusBtn = document.getElementById("minus-btn");
+      const plusBtn = document.getElementById("plus-btn");
+      const qtyText = document.getElementById("qty");
+      const totalPrice = document.getElementById("total-price");
+      const pricePerItem = 175900;
+
+      let quantity = 1;
+
+      function updateTotal() {
+        qtyText.textContent = quantity;
+        totalPrice.textContent = "IDR " + (pricePerItem * quantity).toLocaleString("id-ID");
+      }
+
+      plusBtn.addEventListener("click", () => {
+        quantity++;
+        updateTotal();
+      });
+
+      minusBtn.addEventListener("click", () => {
+        if (quantity > 1) {
+          quantity--;
+          updateTotal();
+        }
+      });
+
+      updateTotal();
+    });
+  </script>
+
+</body>
+</html>
