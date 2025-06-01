@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Order - JIPPY</title>
+  <link rel="stylesheet" href="TrackOrder.css" />
+</head>
+<body>
+  <header>
+    <img src="assets/LOGO.png" alt="Jippy"/>
+    <nav>
+      <ul>
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Pre-Order</a></li>
+        <li class="active"><a href="#">My Order</a></li>
+        <li><a href="#">Live Chat</a></li>
+      </ul>
+    </nav>
+    <div class="flex gap-4 items-center">
+        <button><img src="assets/notif.png" alt="Notifikasi" class="w-[22px]"></button>
+        <button><img src="assets/profil.png" alt="Akun" class="w-[24px]"></button>
+      </div>
+  </header>
+
+  <main>
+    <h1>My Order</h1>
+    <div class="filters">
+      <button class="active">Semua Pesanan</button>
+      <button>Dalam Proses</button>
+      <button>Dalam Pengiriman</button>
+      <button>Selesai</button>
+    </div>
+
+    <div class="order-list">
+      <div class="order-card">
+        <div class="order-info">
+          <img src="assets/laneige.svg" alt="Laneige Lip Mask" />
+          <div>
+            <h3>Laneige Lip Mask</h3>
+            <p>Berry, 20g</p>
+            <span class="status pink">Dalam Pengiriman</span>
+          </div>
+        </div>
+        <div class="order-action">
+          <p>Total Produk: 2</p>
+          <button class="btn-outline">Lacak Pengiriman</button>
+          <button class="btn-pink">Terima</button>
+        </div>
+      </div>
+
+      <div class="order-card">
+        <div class="order-info">
+          <img src="assets/album nct.svg" alt="NCT DREAMSCAPE" />
+          <div>
+            <h3>NCT DREAMSCAPE</h3>
+            <p>Produk dari DREAMSCAPE</p>
+            <span class="status purple">Dalam Proses</span>
+            <p class="delivery-date">Paket akan dikirim estimasi: 07-07-2025</p>
+          </div>
+        </div>
+        <div class="order-action">
+          <p>Total Produk: 2</p>
+          <button class="btn-outline">Hubungi Admin</button>
+        </div>
+      </div>
+
+      <div class="order-card">
+        <div class="order-info">
+          <img src="assets/Laneige cushion.svg" alt="Laneige Cushion" />
+          <div>
+            <h3>Laneige Cushion</h3>
+            <p>13N IVORY, 21C COOL BEIGE</p>
+            <span class="status blue">Selesai</span>
+            <p class="delivery-date">Paket sudah diterima.</p>
+          </div>
+        </div>
+        <div class="order-action">
+          <p>Total Produk: 2</p>
+          <button class="btn-outline">Beli Lagi</button>
+          <button class="btn-grey">Nilai</button>
+        </div>
+      </div>
+
+      <div class="order-card">
+        <div class="order-info">
+          <img src="assets/fashion.svg" alt="Slim Mini Long Sleeve Dress" />
+          <div>
+            <h3>Slim Mini Long Sleeve Dress</h3>
+            <p>XL, Dusty Pink</p>
+            <span class="status blue">Selesai</span>
+            <p class="delivery-date">Paket sudah diterima.</p>
+          </div>
+        </div>
+        <div class="order-action">
+          <p>Total Produk: 1</p>
+          <button class="btn-outline">Beli Lagi</button>
+          <button class="btn-grey">Nilai</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-left">
+          <img src="assets/LOGO.png" alt="Jippy" />
+          <p>©️ Jippy 2025 - All Rights Reserved</p>
+        </div>
+        <div class="footer-right">
+          <div class="footer-links">
+            <p>Home</p>
+            <p>About Us</p>
+            <p>Contact Person</p>
+          </div>
+          <div class="footer-sub-links">
+            <p>Terms of Use</p>
+            <p>Privacy Policy</p>
+            <p>Agreement</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
