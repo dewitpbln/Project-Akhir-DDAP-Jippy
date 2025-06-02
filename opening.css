@@ -13,15 +13,20 @@ body {
 }
 
 .navbar {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 18px 32px;
-    background-color: #fff;
-    border: none;
-    box-shadow: none;
-    width: 100%;
-    position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 32px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+/* Tambahkan flex container untuk kanan */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  gap: 24px;
 }
 
 .navbar .logo {
@@ -29,40 +34,45 @@ body {
 }
 
 .navbar .logo img {
-    height: 40px;
+    height: 48px;
 }
 
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 32px;
-    margin-right: auto;
+.navbar .nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.nav-links a {
-    text-decoration: none;
-    color: #000;
-    font-weight: bold;
-    font-size: 1.15rem;
-    transition: color 0.2s;
+.navbar .nav-links li a {
+  text-decoration: none;
+  color: #222;
+  font-weight: bold;
+  font-size: 20px;
+  transition: color 0.2s;
+}
+
+.navbar .nav-links li a:hover {
+  color: #2196f3;
 }
 
 .btn-signup {
-    background-color: #4dbfff;
-    color: white;
-    padding: 8px 22px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1rem;
-    margin-left: 24px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.10);
-    border: none;
-    transition: background 0.2s;
+  padding: 6px 22px;
+  background: #21a6e3;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s;
+  cursor: pointer;
+  display: inline-block;
 }
 
 .btn-signup:hover {
-    background: #2496d1;
+  background: #1789c7;
 }
 
 /* --- HERO SECTION --- */
@@ -284,4 +294,19 @@ body {
     .features {
         gap: 24px;
     }
+}
+
+@media (max-width: 700px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 12px;
+  }
+  .nav-links {
+    gap: 18px;
+  }
+  .btn-signup {
+    margin-left: 0;
+    margin-top: 10px;
+  }
 }
