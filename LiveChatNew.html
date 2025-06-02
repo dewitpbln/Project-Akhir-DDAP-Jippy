@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Chat - JIPPY</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+     <link href="style.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-purple: #8A2BE2; /* Contoh ungu */
+            --light-purple: #F0E6FA; /* Contoh ungu muda untuk chat bubble */
+            --accent-yellow: #FFD700;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --border-color: #DCDCDC;
+            --bg-light-gray: #F5F5F5;
+            --bg-white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-light-gray); /* Latar belakang body sedikit abu-abu */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background-color: var(--bg-white); /* atau bisa var(--bg-light-gray) jika diinginkan */
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-logo {
+            height: 40px; /* Ukuran logo */
+            margin-right: 2rem;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 2.5rem; /* Jarak antar menu */
+        }
+
+        .nav-menu li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            padding: 0.5rem 0.8rem;
+            border-radius: 20px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .nav-menu li a:hover {
+            color: var(--primary-purple);
+        }
+
+        .nav-menu li a.active {
+            background-color: var(--accent-yellow);
+            border: 1px solid var(--text-dark);
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .header-right .icon {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+
+        .header-right .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--border-color); /* Placeholder */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            border: 1px solid var(--border-color);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex-grow: 1;
+            padding: 2rem 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .chat-container {
+            width: 100%;
+            max-width: 900px; /* Lebar maksimal container chat */
+            background-color: var(--bg-white);
+            border: 1.5px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Chat Header */
+        .chat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .chat-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .chat-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-purple);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            color: var(--bg-white);
+            border: 1px solid var(--primary-purple);
+        }
+
+        .chat-info h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+        }
+
+        .chat-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .chat-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .chat-actions .icon {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+
+        /* Chat Messages */
+        .chat-messages {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            overflow-y: auto; /* Untuk scroll jika pesan banyak */
+            max-height: 400px; /* Batasi tinggi untuk pesan */
+            padding-right: 10px; /* Untuk scrollbar */
+        }
+
+        .message-bubble {
+            display: flex;
+            margin-bottom: 0.5rem;
+        }
+
+        .message-bubble.sent {
+            justify-content: flex-end;
+        }
+
+        .message-bubble.received {
+            justify-content: flex-start;
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: 0.8rem 1.2rem;
+            border-radius: 15px;
+            position: relative;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .message-bubble.received .message-content {
+            background-color: var(--light-purple);
+            color: var(--text-dark);
+            border-bottom-left-radius: 5px;
+        }
+
+        .message-bubble.sent .message-content {
+            background-color: var(--bg-light-gray); /* atau putih terang */
+            color: var(--text-dark);
+            border-bottom-right-radius: 5px;
+        }
+
+        .message-time {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-top: 0.3rem;
+            text-align: right;
+        }
+
+        .message-bubble.received .message-time {
+            text-align: left;
+        }
+
+        /* Quick Reply Tags */
+        .quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            justify-content: center;
+        }
+
+        .quick-reply-tag {
+            padding: 0.6rem 1.2rem;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            background-color: var(--bg-white);
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .quick-reply-tag:hover {
+            background-color: var(--bg-light-gray);
+        }
+
+        /* Message Input */
+        .message-input-area {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .message-input {
+            flex-grow: 1;
+            position: relative;
+        }
+
+        .message-input input[type="text"] {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            font-size: 1rem;
+            outline: none;
+            box-sizing: border-box; /* Pastikan padding tidak menambah lebar */
+        }
+
+        .message-input input[type="text"]::placeholder {
+            color: var(--text-light);
+        }
+
+        .input-icons {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .input-icons .icon {
+            color: var(--text-light);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .send-button {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: var(--primary-purple);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .send-button .icon {
+            color: var(--bg-white);
+            font-size: 1.5rem;
+        }
+
+
+        /* Footer */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background-color: var(--bg-white);
+            border-top: 1px solid var(--border-color);
+            margin-top: auto; /* Push footer to bottom */
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.05);
+            flex-wrap: wrap; /* Untuk responsivitas footer */
+        }
+
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-logo {
+            height: 30px;
+        }
+
+        .footer-left p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        .footer-right {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .footer-right a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-right a:hover {
+            color: var(--primary-purple);
+        }
+
+        /* Basic FontAwesome Icons (for demonstration) */
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .header, .footer {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1rem 5%;
+            }
+
+            .nav-menu ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                margin-top: 1rem;
+            }
+
+            .header-right {
+                margin-top: 1rem;
+                width: 100%;
+                justify-content: flex-end;
+            }
+
+            .page-title {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .chat-container {
+                padding: 1.5rem;
+            }
+
+            .chat-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .chat-profile {
+                width: 100%;
+            }
+
+            .chat-actions {
+                width: 100%;
+                justify-content: flex-end;
+            }
+
+            .message-input-area {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .message-input {
+                width: 100%;
+            }
+
+            .send-button {
+                align-self: flex-end; /* Pindahkan tombol kirim ke kanan bawah */
+            }
+
+            .message-content {
+                max-width: 85%;
+            }
+
+            .quick-replies {
+                justify-content: center;
+                gap: 0.6rem;
+            }
+
+            .footer-right {
+                flex-direction: column;
+                margin-top: 1rem;
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-logo {
+                height: 30px;
+            }
+            .nav-menu ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .nav-menu li a {
+                padding: 0.3rem 0.6rem;
+            }
+            .header-right .icon {
+                font-size: 1.5rem;
+            }
+            .user-avatar {
+                width: 35px;
+                height: 35px;
+                font-size: 1.2rem;
+            }
+            .page-title {
+                font-size: 1.5rem;
+            }
+            .chat-avatar {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+            .message-content {
+                font-size: 0.85rem;
+                padding: 0.6rem 1rem;
+            }
+            .quick-reply-tag {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.8rem;
+            }
+            .message-input input[type="text"] {
+                padding: 0.8rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            .input-icons .icon {
+                font-size: 1rem;
+            }
+            .send-button {
+                width: 40px;
+                height: 40px;
+            }
+            .send-button .icon {
+                font-size: 1.3rem;
+            }
+            .footer-logo {
+                height: 25px;
+            }
+            .footer-left p, .footer-right a {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <img src="https://via.placeholder.com/40x40?text=Logo" alt="Jippy Logo" class="header-logo">
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Pre-Order</a></li>
+                    <li><a href="#">My Order</a></li>
+                    <li><a href="#" class="active">Live Chat</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-right">
+            <i class="fas fa-bell icon"></i>
+            <div class="user-avatar"><i class="fas fa-user"></i></div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <h1 class="page-title">Live Chat</h1>
+
+        <div class="chat-container">
+            <div class="chat-header">
+            <div class="chat-user" style="display: flex; align-items: center; gap: 10px;">
+                <img src="assets/Jippy Chan.svg" alt="Jippy Chan" style="width: 50px; height: 50px; border-radius: 50%;" />
+            <div>
+                <div class="chat-profile">
+                    <div class="chat-avatar">J C</div>
+                    <div class="chat-info">
+                        <h3>Jippy Chan</h3>
+                        <p>Online</p>
+                    </div>
+                </div>
+                <div class="chat-actions">
+                    <img src="assets/call_11723509 1.svg" alt="Call" style="width: 24px; height: 24px;" />
+                    <img src="assets/Frame 1000007212.svg" alt="Menu" style="width: 24px; height: 24px;" />
+                </div>
+            </div>
+
+            <div class="chat-messages">
+                <div class="message-bubble received">
+                    <div class="message-content">
+                        Halo, Terima Kasih telah menghubungi Kami!
+                        <br><br>
+                        Aku, Jippy Chan! Ada yang bisa kami bantu? Jika Anda memiliki pertanyaan atau butuh bantuan terkait Jippy, silahkan beritahu Kami lebih lanjut. Kami siap membantu Anda!
+                    </div>
+                </div>
+                <div class="message-bubble received">
+                    <div class="message-time">12.30</div>
+                </div>
+
+                <div class="message-bubble sent">
+                    <div class="message-content">
+                        Halo, Min!
+                    </div>
+                </div>
+                <div class="message-bubble sent">
+                    <div class="message-time">12.30</div>
+                </div>
+
+                <div class="message-bubble sent">
+                    <div class="message-content">
+                        Bagaimana cara cek barangnya ORI atau tidak?
+                    </div>
+                </div>
+
+                <div class="message-bubble sent">
+                    <div class="message-content">
+                        Karena ini first time aku belanja disini, Min.
+                    </div>
+                </div>
+
+                <div class="message-bubble sent">
+                    <div class="message-content">
+                        Agak trust issue, hehe.
+                    </div>
+                </div>
+                <div class="message-bubble sent">
+                    <div class="message-time">13.00</div>
+                </div>
+
+                </div>
+
+            <div class="quick-replies">
+                <span class="quick-reply-tag">Kendala Checkout Pesanan</span>
+                <span class="quick-reply-tag">Informasi Jasa Kirim</span>
+                <span class="quick-reply-tag">Cara Pembayaran</span>
+                <span class="quick-reply-tag">Bagaimana cara pesan barang Open PO?</span>
+                <span class="quick-reply-tag">Terima Kasih</span>
+            </div>
+
+            <div class="message-input-area">
+                <div class="message-input">
+                    <input type="text" placeholder="Type your message here...">
+                    <div class="input-icons">
+                        <i class="fas fa-paperclip icon"></i>
+                        <i class="fas fa-camera icon"></i>
+                    </div>
+                </div>
+                <div class="send-button">
+                    <i class="fas fa-microphone icon"></i>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-left">
+            <img src="assets/logo jippy.png" alt="Jippy Logo" class="footer-logo">
+            <p>&copy; Jippy 2025 - All Rights Reserved</p>
+        </div>
+        <div class="footer-right">
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact Person</a>
+            <a href="#">Terms of Use</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Agreement</a>
+        </div>
+    </footer>
+</body>
+</html>

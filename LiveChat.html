@@ -1,45 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Live Chat - JIPPY</title>
-  <link rel="stylesheet" href="LiveChat.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Chat - JIPPY</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+     <link href="style.css" rel="stylesheet">
+  <title>Live Chat</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: #FFFFFF;
+      color: #333;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #fff;
+      padding: 15px 30px;
+      border-bottom: 2px solid #f1f1f1;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+      color: #ff69b4;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    nav button:hover {
+      background-color: #ffe58f;
+    }
+
+    nav li.active a {
+      background-color: #FDE7A1;
+      padding: 5px 10px;
+      border-radius: 8px;
+    }
+
+    nav a {
+    font-weight: 600; /* semi-bold */
+    text-decoration: none;
+    color: inherit;
+    }
+
+    .icons span {
+      font-size: 20px;
+      margin-left: 15px;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- ===== HEADER ===== -->
   <header>
-    <img src="logo.png" alt="JIPPY Logo" class="logo" />
+    <img src="assets/LOGO.png" alt="Jippy" class="w-[64px] h-[64px]"/>
     <nav>
-      <button class="active">Dashboard</button>
-      <button>Pre-Order</button>
-      <button>My Order</button>
-      <button>Live Chat</button>
+      <ul>
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Pre-Order</a></li>
+        <li><a href="#">My Order</a></li>
+        <li class="active"><a href="#">Live Chat</a></li>
+      </ul>
     </nav>
-    <div class="icons">
-      <span class="icon-bell">🔔</span>
-      <span class="icon-user">👤</span>
+    <div class="flex gap-4 items-center">
+      <button><img src="assets/notif.png" alt="Notifikasi" class="w-[22px]"></button>
+      <button><img src="assets/profil.png" alt="Akun" class="w-[24px]"></button>
     </div>
   </header>
 
+  <style>
+    /* Title */
+    .chat-title {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    }
+
+    /* Chat Box */
+    .chat-box {
+      width: 90%;
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: #ffdbe8;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      padding: 20px;
+    }
+
+    .chat-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .chat-user strong {
+      font-size: 16px;
+    }
+
+    .chat-user small {
+      color: rgb(0, 0, 0);
+      font-size: 12px;
+    }
+
+    .chat-actions {
+      font-size: 18px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .messages {
+      background-color: #fce4ec;
+      padding: 15px;
+      border-radius: 12px;
+      min-height: 200px;
+    }
+
+    .bot-message p,
+    .user-message p {
+      background: white;
+      padding: 10px 14px;
+      border-radius: 12px;
+      margin-bottom: 6px;
+      display: inline-block;
+      max-width: 75%;
+    }
+
+    .user-message {
+      text-align: right;
+    }
+
+    .time {
+      font-size: 12px;
+      color: gray;
+      display: block;
+      margin: 5px 0;
+    }
+
+    .suggestions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .suggestions button {
+      border: none;
+      background: white;
+      border-radius: 20px;
+      padding: 8px 14px;
+      cursor: pointer;
+      font-size: 14px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .chat-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fcd6e0;
+    border-radius: 30px;
+    padding: 10px 20px;
+    margin-top: 15px;
+    border: 1px solid #ccc;
+    }
+
+    .chat-input input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+    color: #333;
+    }
+
+    .chat-icons img {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    }    
+
+    .chat-input img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    }
+  </style>
+
+  <!-- ===== MAIN ===== -->
   <main>
     <h2 class="chat-title">Live Chat</h2>
     <section class="chat-box">
       <div class="chat-header">
-        <div class="chat-user">
-          <strong>Jippy Chan</strong><br />
-          <small>Online</small>
-        </div>
-        <div class="chat-actions">🎤 📎 ☰</div>
+        <div class="chat-user" style="display: flex; align-items: center; gap: 10px;">
+          <img src="assets/Jippy Chan.svg" alt="Jippy Chan" style="width: 50px; height: 50px; border-radius: 50%;" />
+        <div>
+      <strong>Jippy Chan</strong><br />
+    <small>Online</small>
+  </div>
+</div>
+        <div class="chat-actions">
+          <img src="assets/call_11723509 1.svg" alt="Call" style="width: 24px; height: 24px;" />
+          <img src="assets/Frame 1000007212.svg" alt="Menu" style="width: 24px; height: 24px;" />
+</div>
       </div>
 
       <div class="messages">
         <div class="bot-message">
           <p>Halo, Terima Kasih telah menghubungi Kami!</p>
-          <p>
-            Aku, Jippy Chan! Ada yang bisa kami bantu? Jika Anda memiliki pertanyaan atau
-            butuh bantuan terkait Jippy, silahkan beritahu Kami lebih lanjut. Kami siap
-            membantu Anda!
-          </p>
+          <p>Aku, Jippy Chan! Ada yang bisa kami bantu?</p>
           <span class="time">12.30</span>
         </div>
 
@@ -64,13 +260,67 @@
         </div>
       </div>
 
+      <!-- CHAT INPUT -->
       <div class="chat-input">
-        <input type="text" placeholder="Type your message here..." />
-        <div class="input-icons">📎 🎤</div>
-      </div>
-    </section>
+      <img src="assets/Hyperlink.svg" alt="Link" />
+      <img src="assets/Kamera icon.svg" alt="Camera" />
+      <img src="assets/voice icon.svg" alt="Voice" />
+      <input type="text" placeholder="Type your message here..." />
+    </div>
   </main>
 
+  <style>
+    /* Footer */
+    footer {
+      background-color: #FF96B5;
+      padding: 2 rem 1 rem;
+      font-size: 0.875rem;
+      color: white;
+    }
+
+    footer .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    footer .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer .footer-left img {
+      width: 32px;
+      height: 32px;
+    }
+
+    footer .footer-left p {
+      margin-top: 1rem;
+      font-size: 0.75rem;
+    }
+
+    footer .footer-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.75rem;
+    }
+
+    footer .footer-links {
+      display: flex;
+      gap: 1.75rem;
+      text-align: right;
+      font-size: 1rem;
+    }
+
+    footer .footer-sub-links {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.75rem;
+    }
+  </style>
+
+  <!-- ===== FOOTER ===== -->
   <footer>
     <div class="container">
       <div class="footer-content">
@@ -93,7 +343,6 @@
       </div>
     </div>
   </footer>
-</body>
-</html>
+
 </body>
 </html>
