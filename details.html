@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="details.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korean Shop - New Arrivals</title>
+<body>
+  <div class="header-container">
+  <div class="top-nav">
+    <div class="logo">
+      <img src="assets/LOGO.png" alt="JIPPY Logo" />
+    </div>
+
+     <nav>
+      <a href="#" class="active">Dashboard</a>
+      <a href="#">Pre-Order</a>
+      <a href="#">My Order</a>
+      <a href="#">Live Chat</a>
+    </nav>
+
+     <div class="right-icons">
+        <img src="assets/lonceng-profil.png" alt="Notification Icon" />
+    </div>
+  </div>
+  
+  <div class="bottom-nav">
+   <div class="bottom-nav">
+  <div class="hamburger" aria-label="Menu" role="button" tabindex="0" onclick="toggleSidebar()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<div class="sidebar" id="sidebar">
+  <button class="close-btn" onclick="toggleSidebar()">✕</button>
+
+  <ul class="menu">
+    <li>
+      <div class="menu-title" onclick="toggleDropdown('beauty')">Korean Beauty ▾</div>
+      <ul class="submenu" id="beauty">
+        <li><a href="#">Skincare</a></li>
+        <li><a href="#">Makeup</a></li>
+        <li><a href="#">Body Care</a></li>
+        <li><a href="#">Hair Care</a></li>
+        <li><a href="#">View All</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <div class="menu-title" onclick="toggleDropdown('fashion')">Korean Fashion ▾</div>
+      <ul class="submenu" id="fashion">
+        <li><a href="#">Tops</a></li>
+        <li><a href="#">Bottoms</a></li>
+        <li><a href="#">Jacket</a></li>
+        <li><a href="#">Shoes</a></li>
+        <li><a href="#">Accessories</a></li>
+        <li><a href="#">View All</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <div class="menu-title" onclick="toggleDropdown('kpop')">K-Pop Merch ▾</div>
+      <ul class="submenu" id="kpop">
+        <li><a href="#">Album</a></li>
+        <li><a href="#">Photocards</a></li>
+        <li><a href="#">Kpop Accessories</a></li>
+        <li><a href="#">Lightstick</a></li>
+        <li><a href="#">View All</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <div class="menu-title" onclick="toggleDropdown('food')">Korean Food ▾</div>
+      <ul class="submenu" id="food">
+        <li><a href="#">Main Course</a></li>
+        <li><a href="#">Snack</a></li>
+        <li><a href="#">Drinks</a></li>
+        <li><a href="#">Fast Food</a></li>
+        <li><a href="#">View All</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+  <div class="search-container">
+  <input type="text" class="search-input" placeholder="Search product" />
+  <img src="assets/search.png" alt="Search" class="search-icon" />
+    </div>
+</div>
+
+<div class="container">
+  <div class="left-section">
+    <img src="assets/numbuzin.jpeg" alt="Main Product" class="main-image" />
+    <div class="thumbnail-row">
+      <img src="assets/numbuzin.jpeg" alt="Thumb 1" onclick="document.querySelector('.main-image').src=this.src" />
+      <img src="assets/num1.jpeg" alt="Thumb 1" onclick="document.querySelector('.main-image').src=this.src" />
+      <img src="assets/num2.jpg" alt="Thumb 2" onclick="document.querySelector('.main-image').src=this.src" />
+      <img src="assets/num3.jpg" alt="Thumb 3" onclick="document.querySelector('.main-image').src=this.src" />
+    </div>
+  </div>
+
+  <div class="right-section">
+   
+    <div class="product-info">
+      <h1>Numbuzin Pantothenic Active Shooting Cream</h1>
+      <div class="rating">
+        ★★★★★ <span>(4.9)</span> <span style="color: #00bfff;">531 Reviews</span>
+        <span style="color: hotpink;">753 Sold</span>
+      </div>
+      <div class="price">IDR 270.000</div>
+      <div class="description">
+        <strong>Description</strong>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec iaculis neque, malesuada aliquam est. Duis molestie dignissim leo quis aliquam. Proin mi mi, hendrerit at nibh in, laoreet tincidunt mauris. Cras vitae commodo odio, ut iaculis dolor. Vivamus feugiat enim sit amet justo volutpat mattis. Pellentesque id accumsan erat. Nunc sollicitudin ex eu diam egestas, vitae aliquam leo luctus. Vivamus sed euismod nisi. Proin venenatis nisl a justo molestie imperdiet. Aliquam sem sapien, bibendum nec nulla sodales, interdum tincidunt leo. </p>
+        <p></p>Curabitur dapibus dolor id maximus egestas. Pellentesque eu turpis libero. Donec arcu felis, ultricies vel maximus ullamcorper, vulputate ac augue. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut ut turpis velit. Donec sagittis, justo at mattis ullamcorper, justo metus lacinia tellus, in eleifend nibh lacus id velit. Suspendisse volutpat tincidunt odio, nec consequat quam lobortis at. Etiam ex diam, blandit ac consequat non, tristique quis enim. Aenean in mollis nisi, a faucibus justo. Vestibulum eleifend maximus sapien non aliquet. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+      </div>
+    </div>
+
+    <div class="order-box">
+      <h2>Order Details</h2>
+      <label for="qty">Quantity</label>
+      <input type="number" id="qty" value="1" min="1" />
+      <div class="options">
+        <label for="size">Size</label>
+        <label for="price">Price</label>
+        <label for="delivery">Delivery Fee</label>
+        <label for="discount">Discount</label>
+      </div>
+      <label for="location">Delivery Location</label>
+      <input type="text" id="location" />
+      <label for="notes">Notes</label>
+      <textarea id="notes" rows="3"></textarea>
+      <div class="subtotal">Subtotal: IDR -</div>
+      <button class="buy-now-btn">Buy Now</button>
+    </div>
+  </div>
+</div>
+
+</div>
+ <div class="footer">
+    <div class="footer-left">
+      <img src="assets/LOGO.png" alt="Logo Jippy" />
+      <div>© Jippy 2025 - All Rights Reserved</div>
+    </div>
+    <div class="footer-right">
+      <div class="main-menu">
+        <a href="#">Home</a>
+        <a href="#">About Us</a>
+        <a href="#">Contact Person</a>
+      </div>
+      <div class="sub-menu">
+        <a href="#">Terms of Use</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Agreement</a>
+      </div>
+    </div>
+  </footer>
+  <script src="details.js"></script>
+        </body>
+</html>

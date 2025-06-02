@@ -6,17 +6,86 @@
     <title>Document</title>
      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
      <link href="style.css" rel="stylesheet">
-</head>
-<body>
+    <style>
+
+
+/* Default tampilan input (belum dicentang) */
+.container input {
+  appearance: none; /* hilangkan style browser */
+  width: 15px;
+  height: 15px;
+  border: 2px solid #ccc; /* warna abu default */
+  border-radius: 4px;
+  background-color: white;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Ubah warna saat dicentang */
+.container input:checked {
+  border-color: #FF96B5;       /* ubah border jadi pink */
+}
+
+/* Tanda centang ✔ saat dicentang */
+.container input:checked::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 4px;
+  height: 8px;
+  border: solid #FF96B5;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+
+.range-slider {
+  -webkit-appearance: none;
+  height: 6px;
+  background: linear-gradient(to right, #FF96B5 0%, #FF96B5 50%, #e5e7eb 50%, #e5e7eb 100%);
+  border-radius: 5px;
+  outline: none;
+  transition:  background 450ms ease-in;
+}
+
+.range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #FF96B5;
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 2;
+}
+
+.range-slider::-moz-range-thumb {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #FF96B5;
+  cursor: pointer;
+  border: 2px solid white;
+}
+
+      
+    </style>
+    </head>
+    <body>
     <!-- Navbar -->
     <header class="bg-white shadow">
-    <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+    <div class="max-w-7xl  mx-auto flex items-center justify-between p-4">
       <img src="assets/LOGO.png" alt="Jippy" class="w-[64px] h-[64px]">
       <nav class="flex gap-10 items-center">
-        <a href="#" class="text-black font-medium">Dashboard</a>
+        <a href="#" class="text-black font-medium cursor-pointer hover:bg-[#fff2c9] hover:text-black rounded-lg transition duration-300 px-4 py-1">Dashboard</a>
         <a href="#" class="bg-[#FDE7A1] px-4 py-1 rounded-lg font-medium border border-black">Pre-Order</a>
-        <a href="#" class="text-black font-medium">My Order</a>
-        <a href="#" class="text-black font-medium">Live Chat</a>
+        <a href="#" class="text-black font-medium cursor-pointer hover:bg-[#fff2c9] hover:text-black rounded-lg transition duration-300 px-4 py-1">My Order</a>
+        <a href="#" class="text-black font-medium cursor-pointer hover:bg-[#fff2c9] hover:text-black rounded-lg transition duration-300 px-4 py-1">Live Chat</a>
       </nav>
       <div class="flex gap-4 items-center">
         <button><img src="assets/notif.png" alt="Notifikasi" class="w-[22px]"></button>
@@ -27,9 +96,11 @@
     <!-- ENd Navbar -->
 
     <!-- Header + Search -->
-    <section class="flex items-center justify-between px-4 py-6 max-w-6xl mx-auto">
+  
+
+    <section class="flex items-center justify-between  py-6 max-w-6xl mx-auto">
         <h1 class="text-2xl font-bold">Produk Pre-Order</h1>
-        <div class="relative w-3/4">
+        <div class="relative w-5/7">
         <input
             type="search"
             placeholder="Cari Produk"
@@ -48,51 +119,65 @@
     </section>
 
     <!-- Main Content: Sidebar + Grid -->
-    <section class="flex px-10 gap-8 pb-10">
+    <section class="flex pb-10 max-w-6xl mx-auto justify-between ">
         <!-- Sidebar Filters -->
         <aside class="w-64 space-y-6">
         <!-- Jenis Pre-Order -->
         <div class="bg-white rounded-lg border border-[#706E6E] p-4">
-            <h3 class="text-black font-semibold text-xl mb-3">Jenis Pre-Order</h3>
-            <label class="flex items-center mb-2">
-            <input type="checkbox" class="form-checkbox accent-[#FDB1C7] mr-2">
+            <h3 class="text-black font-semibold text-xl mb-3 category-checkbox">Jenis Pre-Order</h3>
+            <label class="flex items-center mb-2 container text-sm">
+            <input type="checkbox" class="form-checkbox text-green-800  category-checkbox checkbox mr-2" data-category="Barang Pre-Order Kapan Saja">
+            <span class="checkmark"></span>
             Barang Pre-Order Kapan Saja
             </label>
-            <label class="flex items-center">
-            <input type="checkbox" class="form-checkbox accent-[#FDB1C7] mr-2" checked>
+            <label class="flex items-center mb-2 container text-sm">
+            <input type="checkbox" class="form-checkbox text-green-800  category-checkbox checkbox mr-2" data-category="Barang Pre-Order Musiman">
+            <span class="checkmark"></span>
             Barang Pre-Order Musiman
             </label>
             <h3 class="text-black font-semibold text-xl mb-3 mt-3">Kategori</h3>
-            <label class="flex items-center mb-2">
-            <input type="checkbox" class="form-checkbox accent-[#FDB1C7] mr-2">
+            <label class="flex items-center mb-2 container text-sm">
+            <input type="checkbox" class="form-checkbox text-green-800  category-checkbox checkbox mr-2" data-category="Korean Beauty">
+            <span class="checkmark"></span>
             Korean Beauty
             </label>
-            <label class="flex items-center mb-2">
-            <input type="checkbox" class="form-checkbox accent-[#FDB1C7] mr-2" checked>
+            <label class="flex items-center mb-2 container text-sm">
+            <input type="checkbox" class="form-checkbox text-green-800  category-checkbox checkbox mr-2" data-category="Korean Fashion">
+            <span class="checkmark"></span>
             Korean Fashion
             </label>
-            <label class="flex items-center mb-2">
-            <input type="checkbox" class="form-checkbox accent-[#FDB1C7] mr-2">
+            <label class="flex items-center mb-2 container text-sm">
+            <input type="checkbox" class="form-checkbox text-green-800  category-checkbox checkbox mr-2" data-category="Korean Food">
+            <span class="checkmark"></span>
             Korean Food
             </label>
-            <label class="flex items-center">
-            <input type="checkbox" class="form-checkbox accent-[#FDB1C7] mr-2" checked>
+            <label class="flex items-center mb-2 container text-sm">
+            <input type="checkbox" class="form-checkbox text-green-800  category-checkbox checkbox mr-2" data-category="KPOP Merchandise">
+            <span class="checkmark"></span>
             KPOP Merchandise
             </label>
-            <h3 class="text-black font-semibold text-xl mb-3 mt-3">Range Harga</h3>
-            <input type="range" min="50000" max="300000" value="50000" class="w-full mb-2">
-            <input type="range" min="50000" max="300000" value="300000" class="w-full">
-            <div class="flex justify-between text-sm text-gray-600 mt-2">
-            <span>Rp 50.000</span>
-            <span>Rp 300.000</span>
+   
+
+            <h3 class="text-black font-semibold text-xl mb-1 mt-3">Pilih Harga Maksimum</h3>
+
+<input type="range" id="priceRange" min="50000" max="300000" step="5000" value="150000"
+       class="w-full  range-slider">
+
+<div class="flex justify-end text-sm text-gray-600 mt-2">
+  <span>Max: <span id="priceValue">Rp 150.000</span></span>
+</div>
+
+
             </div>
             
         </div>
         <!-- Cara Pre-Order -->
-        <div class="bg-[#FFE8EF] p-6 rounded-lg relative">
-            <div class="absolute -top-4 left-0 w-8 h-8 bg-[#FFF0C2] rounded-full z-1"></div>
-            <div class="absolute -top-3 left-4 bg-[#E2F8FF] px-4 py-1 rounded-full text-black font-semibold text-xl mb-3 z-0">Cara Pre-Order</div>
-            <ul class="mt-4 space-y-2 text-gray-800">
+        <div class="bg-[#FFE8EF] p-6 rounded-lg relative mt-10">
+            <div class="flex relative top-[-40px] left-[-30px]">
+            <img src="assets/icon.png" class="w-fit">
+            <div class="bg-[#E2F8FF] absolute left-10 py-2 px-3 rounded-full font-bold">Cara Pre-Order</div>
+            </div>
+            <ul class="space-y-2 text-gray-800 relative top-[-15px] ">
             <li class="flex items-start"><span class="text-xl leading-none text-[#B29FFF] mr-2">★</span>Pilih produk dan pilih jumlah</li>
             <li class="flex items-start"><span class="text-xl leading-none text-[#B29FFF] mr-2">★</span>Klik pesan</li>
             <li class="flex items-start"><span class="text-xl leading-none text-[#B29FFF] mr-2">★</span>Masukkan detail pengiriman</li>
@@ -104,7 +189,7 @@
         </aside>
 
         <!-- Grid Produk -->
-        <main class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 px-10 pb-10">
+        <main class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10  pb-10">
         <!-- Card 1 -->
         <article class="w-[249px] h-[338px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC]">
             <img
@@ -114,6 +199,7 @@
             />
             <div class="px-4 pt-2 pb-4 flex-1 flex flex-col">
                 <h3 class="text-lg font-semibold">NCT DREAMSCAPE</h3>
+                <p>Korean Food</p>
                 <p class="text-sm text-gray-500 mt-2">Close PO: 20 Juli 2025</p>
                 <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg">
                     Lihat Detail
@@ -130,6 +216,7 @@
             />
             <div class="p-4 flex-1 flex flex-col">
                 <h3 class="text-lg font-semibold">GFRIEND Memories</h3>
+                     <p>Korean Food</p>
                 <p class="text-sm text-gray-500 mt-2">Close PO: 15 Agustus 2025</p>
                 <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg">
                     Lihat Detail
@@ -145,6 +232,7 @@
             />
             <div class="p-4 flex-1 flex flex-col">
                 <h3 class="text-lg font-semibold">Cute Pink Top</h3>
+                     <p>Korean Food</p>
                 <p class="text-sm text-gray-500 mt-2">Close PO: 30 Agustus 2025</p>
                 <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg">
                     Lihat Detail
@@ -160,6 +248,7 @@
             />
             <div class="p-4 flex-1 flex flex-col">
                 <h3 class="text-lg font-semibold">Floral Dress</h3>
+                     <p>Korean Food</p>
                 <p class="text-sm text-gray-500 mt-2">Close PO: 2 September 2025</p>
                 <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg">
                     Lihat Detail
@@ -175,6 +264,7 @@
             />
             <div class="p-4 flex-1 flex flex-col">
                 <h3 class="text-lg font-semibold">One Set Chic</h3>
+                     <p>Korean Food</p>
                 <p class="text-sm text-gray-500 mt-2">Close PO: 13 September 2025</p>
                 <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg">
                     Lihat Detail
@@ -182,7 +272,7 @@
             </div>
         </article>
         <!-- Card 6 -->
-        <article class="w-[249px] h-[338px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC]">
+        <article class="w-[249px] h-[338px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC] product-card" data-category="Korean Beauty">
             <img 
                 src="assets/aespa.png"
                 alt="AESPA Season Greeting"
@@ -190,6 +280,7 @@
             />
             <div class="p-4 flex-1 flex flex-col">
                 <h3 class="text-lg font-semibold">AESPA Season Greeting</h3>
+              
                 <p class="text-sm text-gray-500 mt-2">Close PO: 20 September 2025</p>
                 <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg">
                     Lihat Detail
@@ -205,6 +296,7 @@
             />
             <div class="p-4 flex-1 flex flex-col">
                 <h3 class="text-lg font-semibold">Blush Charm Set</h3>
+                     <p>Korean Food</p>
                 <p class="text-sm text-gray-500 mt-2">Close PO: 30 September 2025</p>
                 <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg">
                     Lihat Detail
@@ -220,6 +312,7 @@
             />
             <div class="p-4 flex-1 flex flex-col">
                 <h3 class="text-lg font-semibold">NCT Lightstick Ver. 2</h3>
+                     <p>Korean Fashion</p>
                 <p class="text-sm text-gray-500 mt-2">Close PO: 11 Oktober 2025</p>
                 <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg">
                     Lihat Detail
@@ -235,6 +328,7 @@
             />
             <div class="p-4 flex-1 flex flex-col">
                 <h3 class="text-lg font-semibold">Bunny Crop Top</h3>
+                     <p>Korean Beauty</p>
                 <p class="text-sm text-gray-500 mt-2">Close PO: 20 Oktober 2025</p>
                 <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg">
                     Lihat Detail
@@ -254,9 +348,9 @@
             </div>
             <div class="flex flex-col items-end space-y-3">
                 <span class="flex gap-7 text-right text-md">
-                    <p>Home</p>
-                    <p>About Us</p>
-                    <p>Contact Person</p>
+                    <a href="#" class="hover:underline cursor-pointer">Home</a>
+                    <a href="#" class="hover:underline cursor-pointer">About Us</a>
+                    <a href="#" class="hover:underline cursor-pointer">Contact Person</a>
                 </span>
                 <span class="flex gap-4 text-xs">
                     <p>Terms of Use</p>
@@ -264,9 +358,77 @@
                     <p>Agreement</p>
                 </span>
             </div>
+
         </div>
         </div>
     </footer>
+<script>
+  const checkboxes = document.querySelectorAll('.category-checkbox');
+  const products = document.querySelectorAll('.product-card');
+
+  checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+      filterProducts();
+    });
+  });
+
+  function filterProducts() {
+    const selectedCategories = Array.from(checkboxes)
+      .filter(cb => cb.checked)
+      .map(cb => cb.getAttribute('data-category'));
+
+    products.forEach(product => {
+      const category = product.getAttribute('data-category');
+
+
+      if (selectedCategories.length === 0) {
+        product.classList.remove('hidden');
+      } else {
+   
+        if (selectedCategories.includes(category)) {
+          product.classList.remove('hidden');
+        } else {
+         
+          product.classList.add('hidden');
+        }
+      }
+    });
+  }
+
+
+
+
+
+  const range = document.getElementById("priceRange");
+  const label = document.getElementById("priceValue");
+
+  function formatRupiah(angka) {
+    return "Rp " + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
+
+  function setSliderBackground(slider) {
+    const min = slider.min;
+    const max = slider.max;
+    const val = slider.value;
+
+    const percent = ((val - min) / (max - min)) * 100;
+
+    slider.style.background = `linear-gradient(to right, #FF96B5 0%, #FF96B5 ${percent}%, #e5e7eb ${percent}%, #e5e7eb 100%)`;
+  }
+
+  // inisialisasi awal
+  setSliderBackground(range);
+  label.textContent = formatRupiah(range.value);
+
+  range.addEventListener("input", function () {
+    setSliderBackground(this);
+    label.textContent = formatRupiah(this.value);
+  });
+
+
+
+
+</script>
 
 </body>
 </html>
