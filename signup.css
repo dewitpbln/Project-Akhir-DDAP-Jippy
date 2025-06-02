@@ -1,0 +1,139 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Container dua kolom */
+.container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* Rectangle pink transparan untuk login-section */
+.login-section {
+  flex: 1;
+  padding: 40px;
+  background: rgba(246, 92, 137, 0.33); /* #F65C89 33% */
+  color: #000;
+  z-index: 2;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logo {
+  width: 80px;
+  margin-bottom: 20px;
+}
+
+.logo-fixed {
+  position: fixed;
+  top: 24px;
+  left: 32px;
+  width: 80px;
+  z-index: 10;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.login-section h1 {
+  text-align: center;
+  width: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+input {
+  padding: 10px;
+  margin-top: 5px;
+  border: 2px solid;
+  border-radius: 12px;
+  font-size: 20px;
+}
+
+.btn {
+  margin-top: 25px;
+  padding: 8px 28px;
+  background-color: #ff4e91;
+  color: white;
+  font-size: 20px;
+  border: 2px;      /* tambahkan border putih */
+  border-radius: 12px;
+  cursor: pointer;
+  width: auto;
+  align-self: center;
+  min-width: 120px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  box-sizing: border-box;
+}
+
+.btn:hover {
+  background-color: #e63e7c;
+}
+
+.signup-text {
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: center; /* tambahkan ini */
+  width: 100%;        /* pastikan lebar penuh */
+}
+
+/* Image section styling */
+.image-section {
+  flex: 1;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* Gaya per gambar sesuai posisi di layout contoh */
+
+.img-shopping {
+  position: absolute;
+  top: 0%;
+  left: 1%;
+  width: 400px;
+}
+
+.img-bags {
+  position: absolute;
+  bottom: 15%;
+  left: 1%;
+  width: 300px;
+}
+
+.img-tags {
+  position: absolute;
+  top: 32%;
+  right: 1%;
+  width: 375px;
+}
+
+.img-phone {
+  position: absolute;
+  bottom: 1%;
+  right: 18%;
+  width: 200px;
+}
