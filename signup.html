@@ -11,7 +11,7 @@
   <div class="container">
     <div class="login-section">
       <h1>Sign up to <strong>JIPPY</strong></h1>
-      <form>
+      <form id="signup-form">
         <label for="fullname">Full name:</label>
         <input type="text" id="fullname" name="fullname" required>
         <label for="email">Email:</label>
@@ -30,5 +30,21 @@
       <img src="assets/signin tangan hp.png" class="img-phone" alt="phone">
     </div>
   </div>
+  <script>
+  document.getElementById('signup-form').addEventListener('submit', function(e) {
+    e.preventDefault(); // Mencegah reload
+
+    var password = document.getElementById('password').value;
+    var confirm = document.getElementById('confirm-password').value;
+
+    if (password !== confirm) {
+      alert('Confirm Password must match Password!');
+      return;
+    }
+
+    // Jika valid, redirect ke menu.html
+    window.location.href = 'menu.html';
+  });
+  </script>
 </body>
 </html>
