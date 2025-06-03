@@ -7,93 +7,44 @@
      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
      <link href="style.css" rel="stylesheet">
   <title>Live Chat</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-    }
-
-    body {
-      background-color: #FFFFFF;
-      color: #333;
-    }
-
-    /* Header */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #fff;
-      padding: 15px 30px;
-      border-bottom: 2px solid #f1f1f1;
-    }
-
-    .logo {
-      font-size: 20px;
-      font-weight: bold;
-      color: #ff69b4;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 25px;
-    }
-
-    nav button {
-      background: none;
-      border: none;
-      font-size: 16px;
-      cursor: pointer;
-      padding: 6px 12px;
-      border-radius: 6px;
-      transition: background 0.3s;
-    }
-
-    nav button:hover {
-      background-color: #ffe58f;
-    }
-
-    nav li.active a {
-      background-color: #FDE7A1;
-      padding: 5px 10px;
-      border-radius: 8px;
-    }
-
-    nav a {
-    font-weight: 600; /* semi-bold */
-    text-decoration: none;
-    color: inherit;
-    }
-
-    .icons span {
-      font-size: 20px;
-      margin-left: 15px;
-    }
-  </style>
 </head>
 <body>
 
   <!-- ===== HEADER ===== -->
-  <header>
-    <img src="assets/LOGO.png" alt="Jippy" class="w-[64px] h-[64px]"/>
-    <nav>
-      <ul>
-        <li><a href="#">Dashboard</a></li>
-        <li><a href="#">Pre-Order</a></li>
-        <li><a href="#">My Order</a></li>
-        <li class="active"><a href="#">Live Chat</a></li>
-      </ul>
-    </nav>
-    <div class="flex gap-4 items-center">
-      <button><img src="assets/notif.png" alt="Notifikasi" class="w-[22px]"></button>
-      <button><img src="assets/profil.png" alt="Akun" class="w-[24px]"></button>
+  <header class="bg-white shadow">
+    <div class="max-w-7xl  mx-auto flex items-center justify-between p-4">
+      <img src="assets/LOGO.png" alt="Jippy" class="w-[64px] h-[64px]">
+      <nav class="flex gap-10 items-center">
+        <a href="#" class="text-black font-medium cursor-pointer hover:bg-[#fff2c9] hover:text-black rounded-lg transition duration-300 px-4 py-1">Dashboard</a>
+        <a href="#" class="text-black font-medium cursor-pointer hover:bg-[#fff2c9] hover:text-black rounded-lg transition duration-300 px-4 py-1">Pre Order</a>
+        <a href="#" class="text-black font-medium cursor-pointer hover:bg-[#fff2c9] hover:text-black rounded-lg transition duration-300 px-4 py-1">My Order</a>
+        <a href="#" class="bg-[#FDE7A1] px-4 py-1 rounded-lg font-medium border border-black">Live Chat</a>
+      </nav>
+      <div class="flex gap-4 items-center">
+        <button><img src="assets/notif.png" alt="Notifikasi" class="w-[22px]"></button>
+        <button><img src="assets/profil.png" alt="Akun" class="w-[24px]"></button>
+      </div>
     </div>
   </header>
 
   <style>
+    :root {
+            /* Palet Warna */
+            --primary-purple: #fcfcfc; /* Ungu utama untuk tombol kirim, dll. */
+            --light-purple-bubble: #fcfcfc; /* Ungu muda untuk bubble chat bot (sebelum diubah ke putih) */
+            --accent-yellow: #FFD700; /* Kuning aksen (jika ada) */
+            --text-dark: #000000; /* Warna teks gelap utama */
+            --text-light: #050505; /* Warna teks abu-abu terang (untuk placeholder, waktu) */
+            --border-color: #000000; /* Warna border umum (abu-abu terang) */
+            --bg-light-gray: #F8F8F8; /* Warna latar belakang body atau elemen ringan */
+            --bg-white: #fffefe; /* Warna putih murni untuk background chat box atau bubble tertentu */
+            --user-bubble-bg: #ffffff; /* Warna abu-abu terang untuk bubble chat user */
+            --padding-default: 1rem; /* 16px */
+            --margin-default: 1rem; /* 16px */
+            --border-radius-default: 20px;
+            --border-radius-small: 5px;
+        }
+
     /* Title */
     .chat-title {
     text-align: center;
@@ -106,11 +57,11 @@
     /* Chat Box */
     .chat-box {
       width: 90%;
-      max-width: 800px;
+      max-width: 1279px;
       margin: 20px auto;
       background-color: #ffdbe8;
-      border: 1px solid #ccc;
-      border-radius: 20px;
+      border: 1px solid #000000;
+      border-radius: 57px;
       padding: 20px;
     }
 
@@ -136,12 +87,170 @@
       gap: 10px;
     }
 
-    .messages {
-      background-color: #fce4ec;
-      padding: 15px;
-      border-radius: 12px;
-      min-height: 200px;
+    .chat-input-area {
+    display: flex; 
+    align-items: center; 
+    gap: 1rem; 
+    padding-top: 1rem; 
+    border-top: 1px solid var(--border-color); 
+    margin-top: 1rem; 
     }
+
+
+  .messages {
+    flex-grow: 1; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 0.8rem;  
+    padding-right: 10px; 
+    padding-bottom: 1rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1rem;
+  }
+
+  .message-content {
+    max-width: 75%; 
+    padding: 0.8rem 1.2rem; 
+    border-radius: 15px; 
+    font-size: 0.95rem;
+    line-height: 1.4;
+    word-wrap: break-word; 
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08); 
+    font-weight: 600;
+  }
+
+  .message-wrapper.received .message-content {
+    background-color: var(--bg-white); 
+    color: var(--text-dark); 
+    border-bottom-left-radius: 5px; 
+    border: 1px solid var(--border-color);
+  }
+
+  .message-wrapper.sent .message-content {
+    background-color: var(--user-bubble-bg); 
+    color: var(--text-dark); 
+    border-bottom-right-radius: 5px var(--border-color); 
+    border: 1px solid var(--border-color);
+  }
+
+  .message-wrapper {
+    display: flex; 
+    flex-direction: column; 
+    margin-bottom: 2rem;
+}
+
+/* ===== CONTAINER UNTUK GELEMBUNG PESAN SAJA ===== */
+.message-bubble {
+    display: flex; 
+}
+
+.message-wrapper.received .message-bubble {
+    justify-content: flex-start; 
+}
+
+.message-wrapper.sent .message-bubble {
+    justify-content: flex-end; 
+}
+
+
+/* ===== WAKTU PESAN ===== */
+.message-time {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    margin-top: 0.3rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.message-wrapper.sent .message-time {
+    text-align: right; 
+}
+
+.message-wrapper.received .message-time {
+    text-align: left; 
+}
+
+/* ===== ISI GELEMBUNG PESAN (TEXT) ===== */
+.message-content {
+    max-width: 75%; 
+    padding: 0.8rem 1.2rem;
+    border-radius: 24.5px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    word-wrap: break-word; 
+}
+
+.message-wrapper.received .message-content {
+    background-color: var(--light-purple-bubble); 
+    color: var(--text-dark);
+    gap: 0.8rem;
+}
+
+.message-wrapper.sent .message-content {
+    background-color: var(--user-bubble-bg); 
+    color: var(--text-dark); 
+}
+
+  .message-input {
+    flex-grow: 1; 
+    position: relative; 
+  }
+
+  .message-input input[type="text"] {
+    width: 100%; 
+    padding: 1rem 3.5rem 1rem 1.5rem; /* Padding: atas, kanan (ruang ikon), bawah, kiri */
+    border-radius: 25px; /* Radius yang lebih besar untuk bentuk kapsul */
+    font-size: 1rem;
+    background-color: white; /* Warna putih */
+    color: var(--text-dark); /* Warna teks input */
+    box-sizing: border-box; /* Memastikan padding tidak menambah lebar */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .message-input input[type="text"]::placeholder {
+    color: var(--text-light); /* Warna placeholder */
+  }
+
+  /* Wrapper untuk ikon yang berada di dalam input field */
+  .input-icons {
+    position: absolute; /* Posisi absolut di dalam .message-input */
+    right: 15px; /* Jarak dari kanan input field */
+    top: 50%; /* Posisikan vertikal di tengah */
+    transform: translateY(-50%); /* Penyesuaian presisi vertikal */
+    display: flex;
+    gap: 0.8rem; /* Jarak antar ikon (Hyperlink dan Kamera) */
+  }
+
+  .input-icons img {
+    width: 20px; /* Ukuran ikon */
+    height: 20px;
+    cursor: pointer;
+    opacity: 0.7; /* Sedikit transparansi */
+    transition: opacity 0.2s ease; /* Efek transisi saat hover */
+  }
+
+  .input-icons img:hover {
+    opacity: 1; /* Ikon lebih terang saat hover */
+  }
+
+  /* Tombol Kirim (Ikon Voice/Microphone) */
+  .send-button {
+    width: 48px; /* Ukuran tombol bulat */
+    height: 48px;
+    border-radius: 50%; /* Membuat bulat */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: var(--primary-purple); 
+    display: flex;
+    justify-content: center; /* Tengah secara horizontal */
+    align-items: center; /* Tengah secara vertikal */
+    cursor: pointer;
+    flex-shrink: 0; /* Mencegah tombol mengecil pada layar sempit */
+  }
+
+  .send-button img {
+    width: 24px; /* Ukuran ikon microphone di tombol */
+    height: 24px
+  }
 
     .bot-message p,
     .user-message p {
@@ -169,27 +278,25 @@
       flex-wrap: wrap;
       gap: 8px;
       margin-top: 10px;
+      justify-content: flex-start;
     }
 
     .suggestions button {
       border: none;
       background: white;
       border-radius: 20px;
-      padding: 8px 14px;
+      padding: 6px 16px;
+      radius: 24.5px;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 16px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      text-align: center;
     }
 
-    .chat-input {
+    .chat-input-area {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    background-color: #fcd6e0;
-    border-radius: 30px;
-    padding: 10px 20px;
-    margin-top: 15px;
-    border: 1px solid #ccc;
+    gap: 1rem;
     }
 
     .chat-input input {
@@ -225,33 +332,70 @@
       <strong>Jippy Chan</strong><br />
     <small>Online</small>
   </div>
-</div>
+    </div>
         <div class="chat-actions">
           <img src="assets/call_11723509 1.svg" alt="Call" style="width: 24px; height: 24px;" />
           <img src="assets/Frame 1000007212.svg" alt="Menu" style="width: 24px; height: 24px;" />
-</div>
-      </div>
+    </div>
+    </div>
 
       <div class="messages">
-        <div class="bot-message">
-          <p>Halo, Terima Kasih telah menghubungi Kami!</p>
-          <p>Aku, Jippy Chan! Ada yang bisa kami bantu?</p>
-          <span class="time">12.30</span>
+    </div>
+    
+    <div class="message-wrapper sent">
+        <div class="message-bubble sent">
+            <div class="message-content">
+                Halo, Min!
+            </div>
+        </div>
+        <span class="message-time">12.30</span>
+    </div>
+
+    <div class="message-wrapper received">
+        <div class="message-bubble received">
+            <div class="message-content">
+                Halo, Terima Kasih telah menghubungi Kami!
+            </div>
+    </div>
+
+    <div class="message-wrapper received">
+        <div class="message-bubble received">
+            <div class="message-content">
+                Aku, Jippy Chan! Ada yang bisa kami bantu? Jika Anda memiliki pertanyaan atau butuh bantuan terkait Jippy, silahkan beritahu Kami lebih lanjut. Kami siap membantu Anda!
+            </div>
+        </div>
+        <span class="message-time">12.31</span>
+    </div>
+    </div>
+
+    <div class="message-wrapper sent">
+        <div class="message-bubble sent">
+            <div class="message-content">
+                Bagaimana cara cek barangnya ORI atau tidak?
+            </div>
         </div>
 
-        <div class="user-message">
-          <p>Halo, Min!</p>
-          <span class="time">12.30</span>
+    <div class="message-wrapper sent">
+        <div class="message-bubble sent">
+            <div class="message-content">
+                Karena ini first time aku belanja disini, Min.
+            </div>
         </div>
 
-        <div class="user-message">
-          <p>Bagaimana cara cek barangnya ORI atau tidak?</p>
-          <p>Karena ini first time aku belanja disini, Min.</p>
-          <p>Agak trust issue, hehe.</p>
-          <span class="time">13.00</span>
+    <div class="message-wrapper sent">
+        <div class="message-bubble sent">
+            <div class="message-content">
+                Agak trust issue, hehe.
+            </div>
+              </div>
+              <span class="message-time">13.00</span>
+            </div>
         </div>
+        
+    </div>
 
         <div class="suggestions">
+          <button>Halo,Min!</button>
           <button>Kendala Checkout Pesanan</button>
           <button>Informasi Jasa Kirim</button>
           <button>Cara Pembayaran</button>
@@ -261,12 +405,18 @@
       </div>
 
       <!-- CHAT INPUT -->
-      <div class="chat-input">
-      <img src="assets/Hyperlink.svg" alt="Link" />
-      <img src="assets/Kamera icon.svg" alt="Camera" />
-      <img src="assets/voice icon.svg" alt="Voice" />
-      <input type="text" placeholder="Type your message here..." />
-    </div>
+      <div class="chat-input-area">
+      <div class="message-input">
+        <input type="text" placeholder="Type your message here..." />
+        <div class="input-icons">
+            <img src="assets/Hyperlink.svg" alt="Link" />
+            <img src="assets/Kamera icon.svg" alt="Camera" />
+        </div>
+      </div>
+      <div class="send-button">
+        <img src="assets/voice icon.svg" alt="Voice" />
+      </div>
+  </div>
   </main>
 
   <style>
