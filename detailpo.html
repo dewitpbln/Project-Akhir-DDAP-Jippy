@@ -34,11 +34,20 @@
 
     <!-- Gambar dan Detail Ukuran -->
     <div class="overflow-hidden">
-      <img src="assets/floraldetail.png" alt="Floral Dress" class="rounded-lg w-full object-cover ">
+      <img id="main-image" src="assets/dress1.jpg" alt="Floral Dress" class="rounded-lg w-full object-cover border border-gray-300">
       <div class="flex justify-between gap-2 mt-4">
-        <img src="assets/floraldetail1.png" class="rounded-md w-32 h-32" alt="Thumb 1">
-        <img src="assets/floraldetail2.png" class="rounded-md w-32 h-32" alt="Thumb 2">
-        <img src="assets/floraldetail3.png" class="rounded-md w-32 h-32" alt="Thumb 3">
+      <div class="overflow-hidden w-24 h-24 cursor-pointer hover:border-2 border-pink-400 rounded-md">
+        <img src="assets/dress1.jpg" class="thumb-image w-full h-full object-cover cursor-pointer hover:scale-110 transition-transform duration-300 ease-in-out" alt="Thumb 1">
+      </div>
+      <div class="overflow-hidden w-24 h-24 cursor-pointer hover:border-2 border-pink-400 rounded-md">
+        <img src="assets/dress2.jpg" class="thumb-image w-full h-full object-cover cursor-pointer hover:scale-110 transition-transform duration-300 ease-in-out" alt="Thumb 2">
+      </div>
+      <div class="overflow-hidden w-24 h-24 cursor-pointer hover:border-2 border-pink-400 rounded-md">
+        <img src="assets/dress3.jpg" class="thumb-image w-full h-full object-cover cursor-pointer hover:scale-110 transition-transform duration-300 ease-in-out" alt="Thumb 3">
+      </div>
+      <div class="overflow-hidden w-24 h-24 cursor-pointer hover:border-2 border-pink-400 rounded-md">
+        <img src="assets/dress4.jpg" class="thumb-image w-full h-full object-cover cursor-pointer hover:scale-110 transition-transform duration-300 ea" alt="Thumb 4">
+      </div>
       </div>
 
       <div class="bg-blue-50 p-4 mt-6 rounded-md text-sm">
@@ -160,7 +169,17 @@
         });
       });
 
+      // Thumbnail Image Switch
+      const mainImage = document.getElementById("main-image");
+      const thumbImages = document.querySelectorAll(".thumb-image");
 
+      thumbImages.forEach(thumb => {
+        thumb.addEventListener("click", function () {
+          mainImage.src = this.src;  // Ganti src gambar besar sesuai thumbnail yang diklik
+        });
+      });
+
+      // Update Quantity
       const minusBtn = document.getElementById("minus-btn");
       const plusBtn = document.getElementById("plus-btn");
       const qtyText = document.getElementById("qty");
