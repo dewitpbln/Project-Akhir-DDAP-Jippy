@@ -228,7 +228,7 @@
     width: 86%;
     padding: 12px;
     border-radius: 6px
-    border: 1px solid #aaa;
+    border 1px solid #aaa;
     font-size: 14px;
   }
   .subtotal {
@@ -250,58 +250,73 @@
     background-color: #00a6d6;
   }
 
-  .footer {
-    background-color: #fc8ead;
+.main-footer {
+    background-color: #FF96B5; 
+    padding: 2rem 1rem; 
+    font-size: 0.875rem; 
     color: white;
-    padding: 30px 50px;
+}
+
+.footer-container {
+    max-width: 1200px; 
+    margin-left: auto;
+    margin-right: auto; 
+    padding: 0 20px; 
+}
+
+.footer-content {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;   
-  }
-  .footer-left {
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.footer-left {
     display: flex;
-    align-items: center;
-    gap: 20px;
-    font-size: 14px;
-  }
-  .footer-left img {
-    width: 50px;
-    height: auto;
-  } 
-  .footer-right .main-menu {
+    align-items: center; 
+    padding: 1rem 0; 
+    gap: 1rem; 
+}
+
+.footer-logo {
+    width: 35px; 
+    height: 35px; 
+}
+
+.footer-copyright {
+    margin-top: 1rem; 
+    font-size: 0.75rem; 
+}
+
+.footer-right {
     display: flex;
-    gap: 70px;
-    margin-bottom: 20px;
-    margin-left: 20px;
-  }
-  .footer-right .sub-menu {
+    flex-direction: column; 
+    align-items: flex-end; 
+    gap: 0.75rem; 
+}
+
+.footer-links-primary {
     display: flex;
-    gap: 40px;
-    font-size: 14px;
-    margin-left: 60px;
-  }
-  .footer-right a {
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  .footer-right a:hover {
-    text-decoration: underline;
-  }
-  @media (max-width: 600px) {
-  .footer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-  }
-  .footer-right {
-    flex-direction: column;
-    gap: 10px;
-  }
-  .footer-right .main-menu,
-  .footer-right .sub-menu {
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  }
+    gap: 1.75rem; 
+    text-align: right;
+    font-size: 1rem; 
+}
+
+.footer-links-primary a {
+    color: white; 
+    text-decoration: none; 
+}
+
+.footer-links-primary a:hover {
+    text-decoration: underline; 
+    cursor: pointer; 
+}
+
+.footer-links-secondary {
+    display: flex;
+    gap: 1rem; 
+    font-size: 0.75rem; 
+}
+
+.footer-links-secondary p {
+    margin: 0; 
+}
