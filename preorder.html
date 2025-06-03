@@ -7,86 +7,88 @@
      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
      <link href="style.css" rel="stylesheet">
     <style>
+        /* Default tampilan input (belum dicentang) */
+        .container input {
+            appearance: none; /* hilangkan style browser */
+            width: 15px;
+            height: 15px;
+            border: 2px solid #ccc; /* warna abu default */
+            border-radius: 4px;
+            background-color: white;
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+
+        /* Ubah warna saat dicentang */
+        .container input:checked {
+            border-color: #FF96B5;       /* ubah border jadi pink */
+        }
+
+        /* Tanda centang ✔ saat dicentang */
+        .container input:checked::after {
+            content: "";
+            position: absolute;
+            left: 4px;
+            top: 1px;
+            width: 4px;
+            height: 8px;
+            border: solid #FF96B5;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
 
 
-/* Default tampilan input (belum dicentang) */
-.container input {
-  appearance: none; /* hilangkan style browser */
-  width: 15px;
-  height: 15px;
-  border: 2px solid #ccc; /* warna abu default */
-  border-radius: 4px;
-  background-color: white;
-  display: inline-block;
-  position: relative;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
+        .range-slider {
+            -webkit-appearance: none;
+            height: 6px;
+            background: linear-gradient(to right, #FF96B5 0%, #FF96B5 50%, #e5e7eb 50%, #e5e7eb 100%);
+            border-radius: 5px;
+            outline: none;
+            transition:  background 450ms ease-in;
+        }
 
-/* Ubah warna saat dicentang */
-.container input:checked {
-  border-color: #FF96B5;       /* ubah border jadi pink */
-}
+        .range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #FF96B5;
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
+        }
 
-/* Tanda centang ✔ saat dicentang */
-.container input:checked::after {
-  content: "";
-  position: absolute;
-  left: 4px;
-  top: 1px;
-  width: 4px;
-  height: 8px;
-  border: solid #FF96B5;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
+        .range-slider::-moz-range-thumb {
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #FF96B5;
+            cursor: pointer;
+            border: 2px solid white;
+        }   
 
+        .hidden {
+            display: none;
+        }
 
-.range-slider {
-  -webkit-appearance: none;
-  height: 6px;
-  background: linear-gradient(to right, #FF96B5 0%, #FF96B5 50%, #e5e7eb 50%, #e5e7eb 100%);
-  border-radius: 5px;
-  outline: none;
-  transition:  background 450ms ease-in;
-}
-
-.range-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  background: #FF96B5;
-  cursor: pointer;
-  border: 2px solid white;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
-  position: relative;
-  z-index: 2;
-}
-
-.range-slider::-moz-range-thumb {
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  background: #FF96B5;
-  cursor: pointer;
-  border: 2px solid white;
-}
-
-      
     </style>
-    </head>
-    <body>
+</head>
+
+<body>
     <!-- Navbar -->
-    <header class="bg-white shadow">
+ <header class="bg-white shadow">
     <div class="max-w-7xl  mx-auto flex items-center justify-between p-4">
       <img src="assets/LOGO.png" alt="Jippy" class="w-[64px] h-[64px]">
       <nav class="flex gap-10 items-center">
-  <a href="menu.html" class="text-black font-medium cursor-pointer hover:bg-[#fff2c9] hover:text-black rounded-lg transition duration-300 px-4 py-1">Dashboard</a>
-  <a href="#" class="bg-[#FDE7A1] px-4 py-1 rounded-lg font-medium border border-black">Pre-Order</a>
-  <a href="#" class="text-black font-medium cursor-pointer hover:bg-[#fff2c9] hover:text-black rounded-lg transition duration-300 px-4 py-1">My Order</a>
-  <a href="#" class="text-black font-medium cursor-pointer hover:bg-[#fff2c9] hover:text-black rounded-lg transition duration-300 px-4 py-1">Live Chat</a>
-</nav>
+        <a href="menu.html" class="text-black font-medium cursor-pointer hover:bg-[#fff2c9] hover:text-black rounded-lg transition duration-300 px-4 py-1">Dashboard</a>
+        <a href="#" class="bg-[#FDE7A1] px-4 py-1 rounded-lg font-medium border border-black">Pre-Order</a>
+        <a href="#" class="text-black font-medium cursor-pointer hover:bg-[#fff2c9] hover:text-black rounded-lg transition duration-300 px-4 py-1">My Order</a>
+        <a href="#" class="text-black font-medium cursor-pointer hover:bg-[#fff2c9] hover:text-black rounded-lg transition duration-300 px-4 py-1">Live Chat</a>
+      </nav>
       <div class="flex gap-4 items-center">
         <button><img src="assets/notif.png" alt="Notifikasi" class="w-[22px]"></button>
         <button><img src="assets/profil.png" alt="Akun" class="w-[24px]"></button>
@@ -126,46 +128,44 @@
         <div class="bg-white rounded-lg border border-[#706E6E] p-4">
             <h3 class="text-black font-semibold text-xl mb-3 category-checkbox">Jenis Pre-Order</h3>
             <label class="flex items-center mb-2 container text-sm">
-            <input type="checkbox" class="form-checkbox text-green-800  category-checkbox checkbox mr-2" data-category="Barang Pre-Order Kapan Saja">
-            <span class="checkmark"></span>
-            Barang Pre-Order Kapan Saja
+                <input type="checkbox" class="form-checkbox text-green-800  category-checkbox checkbox mr-2" data-category="Barang Pre-Order Kapan Saja">
+                <span class="checkmark"></span>
+                Barang Pre-Order Kapan Saja
             </label>
             <label class="flex items-center mb-2 container text-sm">
-            <input type="checkbox" class="form-checkbox text-green-800  category-checkbox checkbox mr-2" data-category="Barang Pre-Order Musiman">
-            <span class="checkmark"></span>
-            Barang Pre-Order Musiman
+                <input type="checkbox" class="form-checkbox text-green-800  category-checkbox checkbox mr-2" data-category="Barang Pre-Order Musiman">
+                <span class="checkmark"></span>
+                Barang Pre-Order Musiman
             </label>
             <h3 class="text-black font-semibold text-xl mb-3 mt-3">Kategori</h3>
             <label class="flex items-center mb-2 container text-sm">
-            <input type="checkbox" class="form-checkbox text-green-800  category-checkbox checkbox mr-2" data-category="Korean Beauty">
-            <span class="checkmark"></span>
-            Korean Beauty
+                <input type="checkbox" class="form-checkbox text-green-800  category-checkbox checkbox mr-2" data-category="Korean Beauty">
+                <span class="checkmark"></span>
+                Korean Beauty
             </label>
             <label class="flex items-center mb-2 container text-sm">
-            <input type="checkbox" class="form-checkbox text-green-800  category-checkbox checkbox mr-2" data-category="Korean Fashion">
-            <span class="checkmark"></span>
-            Korean Fashion
+                <input type="checkbox" class="form-checkbox text-green-800  category-checkbox checkbox mr-2" data-category="Korean Fashion">
+                <span class="checkmark"></span>
+                Korean Fashion
             </label>
             <label class="flex items-center mb-2 container text-sm">
-            <input type="checkbox" class="form-checkbox text-green-800  category-checkbox checkbox mr-2" data-category="Korean Food">
-            <span class="checkmark"></span>
-            Korean Food
+                <input type="checkbox" class="form-checkbox text-green-800  category-checkbox checkbox mr-2" data-category="Korean Food">
+                <span class="checkmark"></span>
+                Korean Food
             </label>
             <label class="flex items-center mb-2 container text-sm">
-            <input type="checkbox" class="form-checkbox text-green-800  category-checkbox checkbox mr-2" data-category="KPOP Merchandise">
-            <span class="checkmark"></span>
-            KPOP Merchandise
+                <input type="checkbox" class="form-checkbox text-green-800  category-checkbox checkbox mr-2" data-category="KPOP Merchandise">
+                <span class="checkmark"></span>
+                KPOP Merchandise
             </label>
-   
 
             <h3 class="text-black font-semibold text-xl mb-1 mt-3">Pilih Harga Maksimum</h3>
 
-<input type="range" id="priceRange" min="50000" max="300000" step="5000" value="150000"
-       class="w-full  range-slider">
-
-<div class="flex justify-end text-sm text-gray-600 mt-2">
-  <span>Max: <span id="priceValue">Rp 150.000</span></span>
-</div>
+            <input type="range" id="priceRange" min="50000" max="1000000" step="5000" value="150000"
+                class="w-full  range-slider">
+            <div class="flex justify-end text-sm text-gray-600 mt-2">
+            <span>Max: <span id="priceValue">Rp 150.000</span></span>
+            </div>
 
 
             </div>
@@ -191,148 +191,290 @@
         <!-- Grid Produk -->
         <main class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10  pb-10">
         <!-- Card 1 -->
-        <article class="w-[249px] h-[338px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC]">
+        <article class="w-[249px] h-[360px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC] product-card cursor-pointer transition-transform duration-300 hover:shadow-lg hover:-translate-y-1" data-category="KPOP Merchandise,Barang Pre-Order Musiman" data-price="300000">
             <img
                 src="assets/albumnct.png"
                 alt="NCT DREAMSCAPE"
-                class="w-11/12 mx-auto mt-4 h-36 object-cover rounded-lg"
+                class="w-10/12 mx-auto mt-4 h-36 object-cover rounded-lg mb-4"
             />
             <div class="px-4 pt-2 pb-4 flex-1 flex flex-col">
                 <h3 class="text-lg font-semibold">NCT DREAMSCAPE</h3>
-                <p>Korean Food</p>
+                    <p class="text-xs text-gray-800 mt-2">KPOP Merchandise</p>
                 <p class="text-sm text-gray-500 mt-2">Close PO: 20 Juli 2025</p>
-                <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg">
+                <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg transition-transform duration-300 active:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-pink-400">
                     Lihat Detail
                 </button>
             </div>
         </article>
 
         <!-- Card 2 -->
-        <article class="w-[249px] h-[338px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC]">
+        <article class="w-[249px] h-[360px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC] product-card cursor-pointer transition-transform duration-300 hover:shadow-lg hover:-translate-y-1" data-category="KPOP Merchandise,Barang Pre-Order Musiman" data-price="300000">
             <img 
                 src="assets/gfriend.png"
                 alt="GFRIEND Memories"
-                class="w-11/12 mx-auto mt-4 h-36 object-cover rounded-lg"
+                class="w-10/12 mx-auto mt-4 h-36 object-cover rounded-lg mb-4"
             />
-            <div class="p-4 flex-1 flex flex-col">
+            <div class="p-4 pt-2 pb-4 flex-1 flex flex-col">
                 <h3 class="text-lg font-semibold">GFRIEND Memories</h3>
-                     <p>Korean Food</p>
+                    <p class="text-xs text-gray-800 mt-2">KPOP Merchandise</p>
                 <p class="text-sm text-gray-500 mt-2">Close PO: 15 Agustus 2025</p>
-                <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg">
+                <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg transition-transform duration-300 active:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-pink-400">
                     Lihat Detail
                 </button>
             </div>
         </article>
         <!-- Card 3 -->
-        <article class="w-[249px] h-[338px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC]">
+        <article class="w-[249px] h-[360px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC] product-card cursor-pointer transition-transform duration-300 hover:shadow-lg hover:-translate-y-1" data-category="Korean Fashion,Barang Pre-Order Musiman" data-price="300000">
             <img 
                 src="assets/pinktop.png"
                 alt="Cute Pink Top"
-                class="w-11/12 mx-auto mt-4 h-36 object-cover rounded-lg"
+                class="w-10/12 mx-auto mt-4 h-36 object-cover rounded-lg mb-4"
             />
-            <div class="p-4 flex-1 flex flex-col">
+            <div class="p-4 pt-2 pb-4 flex-1 flex flex-col">
                 <h3 class="text-lg font-semibold">Cute Pink Top</h3>
-                     <p>Korean Food</p>
+                    <p class="text-xs text-gray-800 mt-2">Korean Fashion</p>
                 <p class="text-sm text-gray-500 mt-2">Close PO: 30 Agustus 2025</p>
-                <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg">
+                <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg transition-transform duration-300 active:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-pink-400">
                     Lihat Detail
                 </button>
             </div>
         </article>
         <!-- Card 4 -->
-        <article class="w-[249px] h-[338px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC]">
+        <article class="w-[249px] h-[360px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC] product-card cursor-pointer transition-transform duration-300 hover:shadow-lg hover:-translate-y-1" data-category="Korean Fashion,Barang Pre-Order Musiman" data-price="300000">
             <img 
-                src="assets/floraldress.png"
+                src="assets/dress1.jpg"
                 alt="Floral Dress"
-                class="w-11/12 mx-auto mt-4 h-36 object-contain  rounded-lg"
+                class="w-8/12 mx-auto mt-4 h-36 object-cover rounded-lg mb-4"
             />
-            <div class="p-4 flex-1 flex flex-col">
+            <div class="p-4 pt-2 pb-4 flex-1 flex flex-col">
                 <h3 class="text-lg font-semibold">Floral Dress</h3>
-                <p>Korean Food</p>
+                    <p class="text-xs text-gray-800 mt-2">Korean Fashion</p>
                 <p class="text-sm text-gray-500 mt-2">Close PO: 2 September 2025</p>
-                <button
-                  class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg"
-                  onclick="window.location.href='detailpo.html'">
-                  Lihat Detail
+                <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg transition-transform duration-300 active:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-pink-400">
+                    Lihat Detail
                 </button>
             </div>
         </article>
         <!-- Card 5 -->
-        <article class="w-[249px] h-[338px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC]">
+        <article class="w-[249px] h-[360px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC] product-card cursor-pointer transition-transform duration-300 hover:shadow-lg hover:-translate-y-1" data-category="Korean Fashion,Barang Pre-Order Musiman" data-price="300000">
             <img 
                 src="assets/oneset.png"
                 alt="One Set Chic"
-                class="w-11/12 mx-auto mt-4 h-36 object-contain  rounded-lg"
+                class="w-8/12 mx-auto mt-4 h-36 object-cover rounded-lg mb-4"
             />
-            <div class="p-4 flex-1 flex flex-col">
+            <div class="p-4 pt-2 pb-4 flex-1 flex flex-col">
                 <h3 class="text-lg font-semibold">One Set Chic</h3>
-                     <p>Korean Food</p>
+                    <p class="text-xs text-gray-800 mt-2">Korean Fashion</p>
                 <p class="text-sm text-gray-500 mt-2">Close PO: 13 September 2025</p>
-                <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg">
+                <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg transition-transform duration-300 active:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-pink-400">
                     Lihat Detail
                 </button>
             </div>
         </article>
         <!-- Card 6 -->
-        <article class="w-[249px] h-[338px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC] product-card" data-category="Korean Beauty">
+        <article class="w-[249px] h-[360px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC] product-card cursor-pointer transition-transform duration-300 hover:shadow-lg hover:-translate-y-1" data-category="KPOP Merchandise,Barang Pre-Order Musiman" data-price="300000">
             <img 
                 src="assets/aespa.png"
                 alt="AESPA Season Greeting"
-                class="w-11/12 mx-auto mt-4 h-36 object-cover rounded-lg"
+                class="w-10/12 mx-auto mt-4 h-36 object-cover rounded-lg mb-4"
             />
-            <div class="p-4 flex-1 flex flex-col">
+            <div class="px-4 pt-2 pb-4 flex-1 flex flex-col">
                 <h3 class="text-lg font-semibold">AESPA Season Greeting</h3>
-              
-                <p class="text-sm text-gray-500 mt-2">Close PO: 20 September 2025</p>
-                <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg">
+                    <p class="text-xs text-gray-800 mt-2">KPOP Merchandise</p>
+                <p class="text-sm text-gray-500 mt-3">Close PO: 20 September 2025</p>
+                <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg transition-transform duration-300 active:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-pink-400">
                     Lihat Detail
                 </button>
             </div>
         </article>
         <!-- Card 7 -->
-        <article class="w-[249px] h-[338px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC]">
+        <article class="w-[249px] h-[360px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC] product-card cursor-pointer transition-transform duration-300 hover:shadow-lg hover:-translate-y-1" data-category="Korean Fashion,Barang Pre-Order Musiman" data-price="300000">
             <img 
                 src="assets/blushcharm.png"
                 alt="Blush Charm Set"
-                class="w-11/12 mx-auto mt-4 h-36 object-contain  rounded-lg"
+                class="w-8/12 mx-auto mt-4 h-36 object-cover rounded-lg mb-4"
             />
-            <div class="p-4 flex-1 flex flex-col">
+            <div class="p-4 pt-2 pb-4 flex-1 flex flex-col">
                 <h3 class="text-lg font-semibold">Blush Charm Set</h3>
-                     <p>Korean Food</p>
+                    <p class="text-xs text-gray-800 mt-2">Korean Fashion</p>
                 <p class="text-sm text-gray-500 mt-2">Close PO: 30 September 2025</p>
-                <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg">
+                <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg transition-transform duration-300 active:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-pink-400">
                     Lihat Detail
                 </button>
             </div>
         </article>
         <!-- Card 8 -->
-        <article class="w-[249px] h-[338px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC]">
+        <article class="w-[249px] h-[360px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC] product-card cursor-pointer transition-transform duration-300 hover:shadow-lg hover:-translate-y-1" data-category="KPOP Merchandise,Barang Pre-Order Musiman" data-price="300000">
             <img 
                 src="assets/lsnct.png"
                 alt="NCT Lightstick Ver. 2"
-                class="w-11/12 mx-auto mt-4 h-36 object-contain  rounded-lg "
+                class="w-5/12 mx-auto mt-4 h-36 object-cover rounded-lg mb-4"
             />
-            <div class="p-4 flex-1 flex flex-col">
+            <div class="p-4 pt-2 pb-4 flex-1 flex flex-col">
                 <h3 class="text-lg font-semibold">NCT Lightstick Ver. 2</h3>
-                     <p>Korean Fashion</p>
+                    <p class="text-xs text-gray-800 mt-2">KPOP Merchandise</p>
                 <p class="text-sm text-gray-500 mt-2">Close PO: 11 Oktober 2025</p>
-                <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg">
+                <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg transition-transform duration-300 active:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-pink-400">
                     Lihat Detail
                 </button>
             </div>
         </article>
         <!-- Card 9 -->
-        <article class="w-[249px] h-[338px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC]">
+        <article class="w-[249px] h-[360px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC] product-card cursor-pointer transition-transform duration-300 hover:shadow-lg hover:-translate-y-1" data-category="Korean Fashion,Barang Pre-Order Musiman" data-price="300000">
             <img 
                 src="assets/bunnytop.png"
                 alt="Bunny Crop Top"
-                class="w-11/12 mx-auto mt-4 h-36 object-cover rounded-lg "
+                class="w-10/12 mx-auto mt-4 h-36 object-cover rounded-lg mb-4"
             />
-            <div class="p-4 flex-1 flex flex-col">
+            <div class="p-4 pt-2 pb-4 flex-1 flex flex-col">
                 <h3 class="text-lg font-semibold">Bunny Crop Top</h3>
-                     <p>Korean Beauty</p>
+                    <p class="text-xs text-gray-800 mt-2">Korean Fashion</p>
                 <p class="text-sm text-gray-500 mt-2">Close PO: 20 Oktober 2025</p>
-                <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg">
+                <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg transition-transform duration-300 active:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-pink-400">
+                    Lihat Detail
+                </button>
+            </div>
+        </article>
+
+        <article class="w-[249px] h-[360px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC] product-card cursor-pointer transition-transform duration-300 hover:shadow-lg hover:-translate-y-1" data-category="Korean Beauty,Barang Pre-Order Kapan Saja" data-price="300000">
+            <img 
+                src="assets/Romand Lipgloss.png"
+                alt="ROMAND Lip Gloss"
+                class="w-7/12 mx-auto mt-4 h-36 object-cover rounded-lg mb-4"
+            />
+            <div class="p-4 pt-2 pb-4 flex-1 flex flex-col">
+                <h3 class="text-lg font-semibold">ROMAND Lip Gloss</h3>
+                    <p class="text-xs text-gray-800 mt-2">Korean Beauty</p>
+                <p class="text-sm text-gray-500 mt-2">Estimasi Lama PO: 3 Minggu</p>
+                <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg transition-transform duration-300 active:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-pink-400">
+                    Lihat Detail
+                </button>
+            </div>
+        </article>
+
+        <article class="w-[249px] h-[360px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC] product-card cursor-pointer transition-transform duration-300 hover:shadow-lg hover:-translate-y-1" data-category="Korean Beauty,Barang Pre-Order Kapan Saja" data-price="300000">
+            <img 
+                src="assets/Innisfree.png"
+                alt="Innisfree Dewy Glow"
+                class="w-7/12 mx-auto mt-4 h-36 object-cover rounded-lg mb-4"
+            />
+            <div class="p-4 pt-2 pb-4 flex-1 flex flex-col">
+                <h3 class="text-lg font-semibold">Innisfree Dewy Glow</h3>
+                    <p class="text-xs text-gray-800 mt-2">Korean Beauty</p>
+                <p class="text-sm text-gray-500 mt-2">Estimasi Lama PO: 3 Minggu</p>
+                <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg transition-transform duration-300 active:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-pink-400">
+                    Lihat Detail
+                </button>
+            </div>
+        </article>
+
+        <article class="w-[249px] h-[360px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC] product-card cursor-pointer transition-transform duration-300 hover:shadow-lg hover:-translate-y-1" data-category="Korean Beauty,Barang Pre-Order Kapan Saja" data-price="300000">
+            <img 
+                src="assets/clio palette.png"
+                alt="CLIO Eye Palette Air"
+                class="w-9/12 mx-auto mt-4 h-36 object-cover rounded-lg mb-4"
+            />
+            <div class="p-4 pt-2 pb-4 flex-1 flex flex-col">
+                <h3 class="text-lg font-semibold">CLIO Eye Palette Air</h3>
+                    <p class="text-xs text-gray-800 mt-2">Korean Beauty</p>
+                <p class="text-sm text-gray-500 mt-2">Estimasi Lama PO: 3 Minggu</p>
+                <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg transition-transform duration-300 active:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-pink-400">
+                    Lihat Detail
+                </button>
+            </div>
+        </article>
+
+        <article class="w-[249px] h-[360px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC] product-card cursor-pointer transition-transform duration-300 hover:shadow-lg hover:-translate-y-1" data-category="Korean Food,Barang Pre-Order Kapan Saja" data-price="300000">
+            <img 
+                src="assets/candy.png"
+                alt="Lotte Chewing Candy"
+                class="w-5/12 mx-auto mt-4 h-36 object-cover rounded-lg mb-4"
+            />
+            <div class="p-4 pt-2 pb-4 flex-1 flex flex-col">
+                <h3 class="text-lg font-semibold">Lotte Chewing Candy</h3>
+                    <p class="text-xs text-gray-800 mt-2">Korean Food</p>
+                <p class="text-sm text-gray-500 mt-2">Estimasi Lama PO: 3 Minggu</p>
+                <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg transition-transform duration-300 active:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-pink-400">
+                    Lihat Detail
+                </button>
+            </div>
+        </article>
+
+        <article class="w-[249px] h-[360px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC] product-card cursor-pointer transition-transform duration-300 hover:shadow-lg hover:-translate-y-1" data-category="Korean Food,Barang Pre-Order Kapan Saja" data-price="300000">
+            <img 
+                src="assets/peach almond.png"
+                alt="Peach Almond"
+                class="w-5/12 mx-auto mt-4 h-36 object-cover rounded-lg mb-4"
+            />
+            <div class="p-4 pt-2 pb-4 flex-1 flex flex-col">
+                <h3 class="text-lg font-semibold">Peach Almond</h3>
+                    <p class="text-xs text-gray-800 mt-2">Korean Food</p>
+                <p class="text-sm text-gray-500 mt-2">Estimasi Lama PO: 3 Minggu</p>
+                <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg transition-transform duration-300 active:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-pink-400">
+                    Lihat Detail
+                </button>
+            </div>
+        </article>
+
+        <article class="w-[249px] h-[360px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC] product-card cursor-pointer transition-transform duration-300 hover:shadow-lg hover:-translate-y-1" data-category="Korean Beauty,Barang Pre-Order Kapan Saja" data-price="300000">
+            <img 
+                src="assets/laneige cushion2.jpg"
+                alt="Laneige Cushion"
+                class="w-9/12 mx-auto mt-4 h-36 object-cover rounded-lg mb-4"
+            />
+            <div class="p-4 pt-2 pb-4 flex-1 flex flex-col">
+                <h3 class="text-lg font-semibold">Laneige Cushion</h3>
+                    <p class="text-xs text-gray-800 mt-2">Korean Beauty</p>
+                <p class="text-sm text-gray-500 mt-2">Estimasi Lama PO: 3 Minggu</p>
+                <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg transition-transform duration-300 active:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-pink-400">
+                    Lihat Detail
+                </button>
+            </div>
+        </article>
+
+        <article class="w-[249px] h-[360px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC] product-card cursor-pointer transition-transform duration-300 hover:shadow-lg hover:-translate-y-1" data-category="Korean Beauty,Barang Pre-Order Kapan Saja" data-price="300000">
+            <img 
+                src="assets/romand glasting.png"
+                alt="ROMAND Glasting Balm"
+                class="w-5/12 mx-auto mt-4 h-36 object-cover rounded-lg mb-4"
+            />
+            <div class="p-4 pt-2 pb-4 flex-1 flex flex-col">
+                <h3 class="text-lg font-semibold">ROMAND Glasting Balm</h3>
+                    <p class="text-xs text-gray-800 mt-2">Korean Beauty</p>
+                <p class="text-sm text-gray-500 mt-2">Estimasi Lama PO: 3 Minggu</p>
+                <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg transition-transform duration-300 active:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-pink-400">
+                    Lihat Detail
+                </button>
+            </div>
+        </article>
+
+        <article class="w-[249px] h-[360px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC] product-card cursor-pointer transition-transform duration-300 hover:shadow-lg hover:-translate-y-1" data-category="Korean Beauty,Barang Pre-Order Kapan Saja" data-price="300000">
+            <img 
+                src="assets/anua peach.png"
+                alt="ANUA Peach Serum"
+                class="w-5/12 mx-auto mt-4 h-36 object-cover rounded-lg mb-4"
+            />
+            <div class="p-4 pt-2 pb-4 flex-1 flex flex-col">
+                <h3 class="text-lg font-semibold">ANUA Peach Serum</h3>
+                    <p class="text-xs text-gray-800 mt-2">Korean Beauty</p>
+                <p class="text-sm text-gray-500 mt-2">Estimasi Lama PO: 3 Minggu</p>
+                <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg transition-transform duration-300 active:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-pink-400">
+                    Lihat Detail
+                </button>
+            </div>
+        </article>
+
+        <article class="w-[249px] h-[360px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col border border-[#BCBCBC] product-card cursor-pointer transition-transform duration-300 hover:shadow-lg hover:-translate-y-1" data-category="Korean Beauty,Barang Pre-Order Kapan Saja">
+            <img 
+                src="assets/skin 1004.png"
+                alt="SKIN 1004 Ampoule"
+                class="w-5/12 mx-auto mt-4 h-36 object-cover rounded-lg mb-4"
+            />
+            <div class="p-4 pt-2 pb-4 flex-1 flex flex-col">
+                <h3 class="text-lg font-semibold">SKIN 1004 Ampoule</h3>
+                    <p class="text-xs text-gray-800 mt-2">Korean Beauty</p>
+                <p class="text-sm text-gray-500 mt-2">Estimasi Lama PO: 3 Minggu</p>
+                <button class="mt-auto block mx-auto w-36 h-10 bg-[#FDB1C7] text-black rounded hover:bg-[#FED2DF] flex items-center justify-center rounded-lg transition-transform duration-300 active:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-pink-400">
                     Lihat Detail
                 </button>
             </div>
@@ -342,91 +484,115 @@
 
     <!--Footer-->
     <footer class="bg-[#FF96B5] py-4">
-        <div class="container mx-auto text-sm text-white">
-        <div class="flex justify-between items-center">
-            <div>
-                <img src="assets/LOGO.png" alt="Jippy" class="w-[32px] h-[32px]">
-                <p class="mt-4 text-xs">© Jippy 2025 - All Rights Reserved</p>
-            </div>
-            <div class="flex flex-col items-end space-y-3">
-                <span class="flex gap-7 text-right text-md">
-                    <a href="#" class="hover:underline cursor-pointer">Home</a>
-                    <a href="#" class="hover:underline cursor-pointer">About Us</a>
-                    <a href="#" class="hover:underline cursor-pointer">Contact Person</a>
-                </span>
-                <span class="flex gap-4 text-xs">
-                    <p>Terms of Use</p>
-                    <p>Privacy Policy</p>
-                    <p>Agreement</p>
-                </span>
-            </div>
+    <div class="max-w-6xl container mx-auto text-sm text-white">
+      <div class="flex justify-between items-center">
+        <div class="flex item-center py-4 space-x-4">
+            <img src="assets/LOGO.png" alt="Jippy" class="w-[35px] h-[35px]">
+            <p class="mt-4 text-xs">© Jippy 2025 - All Rights Reserved</p>
+        </div>
+        <div class="flex flex-col items-end space-y-3">
+            <span class="flex gap-7 text-right text-md">
+                <a href="#" class="hover:underline cursor-pointer">Home</a>
+                <a href="#" class="hover:underline cursor-pointer">About Us</a>
+                <a href="#" class="hover:underline cursor-pointer">Contact Person</a>
+            </span>
+            <span class="flex gap-4 text-xs">
+                <p>Terms of Use</p>
+                <p>Privacy Policy</p>
+                <p>Agreement</p>
+            </span>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-        </div>
-        </div>
-    </footer>
 <script>
-  const checkboxes = document.querySelectorAll('.category-checkbox');
-  const products = document.querySelectorAll('.product-card');
+const checkboxes = document.querySelectorAll('.category-checkbox');
+const products = document.querySelectorAll('.product-card');
 
-  checkboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', () => {
-      filterProducts();
-    });
+// Set event listener for each checkbox
+checkboxes.forEach(checkbox => {
+  checkbox.addEventListener('change', () => {
+    filterProducts();
   });
+});
 
-  function filterProducts() {
-    const selectedCategories = Array.from(checkboxes)
-      .filter(cb => cb.checked)
-      .map(cb => cb.getAttribute('data-category'));
+function filterProducts() {
+  // Get selected categories
+  const selectedCategories = Array.from(checkboxes)
+    .filter(cb => cb.checked)  // Only checkboxes that are checked
+    .map(cb => cb.getAttribute('data-category')); // Get the category from data-category
 
-    products.forEach(product => {
-      const category = product.getAttribute('data-category');
+  // Loop through each product
+  products.forEach(product => {
+    const categories = product.getAttribute('data-category').split(','); // Split categories
 
-
-      if (selectedCategories.length === 0) {
+    if (selectedCategories.length === 0) {
+      // If no checkboxes are selected, show all products
+      product.classList.remove('hidden');
+    } else {
+      // If the product has any category that matches selected categories, show it
+      const hasMatchingCategory = selectedCategories.some(category => categories.includes(category));
+      if (hasMatchingCategory) {
         product.classList.remove('hidden');
       } else {
-   
-        if (selectedCategories.includes(category)) {
-          product.classList.remove('hidden');
-        } else {
-         
-          product.classList.add('hidden');
-        }
+        // Hide product if it doesn't match selected categories
+        product.classList.add('hidden');
       }
-    });
-  }
-
-
-
-
-
-  const range = document.getElementById("priceRange");
-  const label = document.getElementById("priceValue");
-
-  function formatRupiah(angka) {
-    return "Rp " + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  }
-
-  function setSliderBackground(slider) {
-    const min = slider.min;
-    const max = slider.max;
-    const val = slider.value;
-
-    const percent = ((val - min) / (max - min)) * 100;
-
-    slider.style.background = `linear-gradient(to right, #FF96B5 0%, #FF96B5 ${percent}%, #e5e7eb ${percent}%, #e5e7eb 100%)`;
-  }
-
-  // inisialisasi awal
-  setSliderBackground(range);
-  label.textContent = formatRupiah(range.value);
-
-  range.addEventListener("input", function () {
-    setSliderBackground(this);
-    label.textContent = formatRupiah(this.value);
+    }
   });
+}
 
+
+const range = document.getElementById("priceRange");
+const label = document.getElementById("priceValue");
+
+function formatRupiah(angka) {
+  return "Rp " + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
+function setSliderBackground(slider) {
+  const min = slider.min;
+  const max = slider.max;
+  const val = slider.value;
+
+  const percent = ((val - min) / (max - min)) * 100;
+
+  slider.style.background = `linear-gradient(to right, #FF96B5 0%, #FF96B5 ${percent}%, #e5e7eb ${percent}%, #e5e7eb 100%)`;
+}
+
+// inisialisasi awal
+setSliderBackground(range);
+label.textContent = formatRupiah(range.value);
+
+range.addEventListener("input", function () {
+  setSliderBackground(this);
+  label.textContent = formatRupiah(this.value);
+  filterByPrice(); // Panggil filter produk setiap kali slider bergerak
+});
+
+// Fungsi filterByPrice untuk memperbarui tampilan produk
+function filterByPrice() {
+  const selectedPrice = range.value;
+  const products = document.querySelectorAll(".product-item");
+
+  products.forEach(product => {
+    const productPrice = parseInt(product.getAttribute("data-price"), 10);
+
+    if (productPrice <= selectedPrice) {
+      product.style.display = "block";  // tampilkan produk
+    } else {
+      product.style.display = "none";  // sembunyikan produk
+    }
+  });
+}
+
+
+// Panggil filterByPrice ketika slider bergerak
+range.addEventListener("input", filterByPrice);
+
+// Panggil filterByPrice pada saat pertama kali halaman dimuat
+document.addEventListener("DOMContentLoaded", filterByPrice);
 
 
 

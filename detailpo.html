@@ -8,7 +8,7 @@
 <body class="bg-white font-sans text-gray-800">
 
   <!-- Header -->
-    <header class="bg-white shadow">
+  <header class="bg-white shadow">
     <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
       <img src="assets/LOGO.png" alt="Jippy" class="w-[64px] h-[64px]">
       <nav class="flex gap-10 items-center">
@@ -34,11 +34,20 @@
 
     <!-- Gambar dan Detail Ukuran -->
     <div class="overflow-hidden">
-      <img src="assets/floraldetail.png" alt="Floral Dress" class="rounded-lg w-full object-cover ">
+      <img id="main-image" src="assets/dress1.jpg" alt="Floral Dress" class="rounded-lg w-full object-cover border border-gray-300">
       <div class="flex justify-between gap-2 mt-4">
-        <img src="assets/floraldetail1.png" class="rounded-md w-32 h-32" alt="Thumb 1">
-        <img src="assets/floraldetail2.png" class="rounded-md w-32 h-32" alt="Thumb 2">
-        <img src="assets/floraldetail3.png" class="rounded-md w-32 h-32" alt="Thumb 3">
+      <div class="overflow-hidden w-24 h-24 cursor-pointer hover:border-2 border-pink-400 rounded-md">
+        <img src="assets/dress1.jpg" class="thumb-image w-full h-full object-cover cursor-pointer hover:scale-110 transition-transform duration-300 ease-in-out" alt="Thumb 1">
+      </div>
+      <div class="overflow-hidden w-24 h-24 cursor-pointer hover:border-2 border-pink-400 rounded-md">
+        <img src="assets/dress2.jpg" class="thumb-image w-full h-full object-cover cursor-pointer hover:scale-110 transition-transform duration-300 ease-in-out" alt="Thumb 2">
+      </div>
+      <div class="overflow-hidden w-24 h-24 cursor-pointer hover:border-2 border-pink-400 rounded-md">
+        <img src="assets/dress3.jpg" class="thumb-image w-full h-full object-cover cursor-pointer hover:scale-110 transition-transform duration-300 ease-in-out" alt="Thumb 3">
+      </div>
+      <div class="overflow-hidden w-24 h-24 cursor-pointer hover:border-2 border-pink-400 rounded-md">
+        <img src="assets/dress4.jpg" class="thumb-image w-full h-full object-cover cursor-pointer hover:scale-110 transition-transform duration-300 ea" alt="Thumb 4">
+      </div>
       </div>
 
       <div class="bg-blue-50 p-4 mt-6 rounded-md text-sm">
@@ -125,10 +134,10 @@
 
   <!--Footer-->
   <footer class="bg-[#FF96B5] py-4">
-    <div class="container mx-auto text-sm text-white">
+    <div class="max-w-6xl container mx-auto text-sm text-white">
       <div class="flex justify-between items-center">
-        <div>
-            <img src="assets/LOGO.png" alt="Jippy" class="w-[32px] h-[32px]">
+        <div class="flex item-center py-4 space-x-4">
+            <img src="assets/LOGO.png" alt="Jippy" class="w-[35px] h-[35px]">
             <p class="mt-4 text-xs">© Jippy 2025 - All Rights Reserved</p>
         </div>
         <div class="flex flex-col items-end space-y-3">
@@ -143,7 +152,6 @@
                 <p>Agreement</p>
             </span>
         </div>
-
       </div>
     </div>
   </footer>
@@ -160,7 +168,17 @@
         });
       });
 
+      // Thumbnail Image Switch
+      const mainImage = document.getElementById("main-image");
+      const thumbImages = document.querySelectorAll(".thumb-image");
 
+      thumbImages.forEach(thumb => {
+        thumb.addEventListener("click", function () {
+          mainImage.src = this.src;  // Ganti src gambar besar sesuai thumbnail yang diklik
+        });
+      });
+
+      // Update Quantity
       const minusBtn = document.getElementById("minus-btn");
       const plusBtn = document.getElementById("plus-btn");
       const qtyText = document.getElementById("qty");

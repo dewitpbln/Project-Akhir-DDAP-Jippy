@@ -1,31 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="menu.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Korean Shop - New Arrivals</title>
+    <title>Korean Shop - jippy</title>
 <body>
-  <div class="header-container">
-  
-  <div class="top-nav">
-    <div class="logo">
-      <img src="assets/LOGO.png" alt="JIPPY Logo" />
+  <header class="bg-white shadow">
+    <div class="max-w-7xl  mx-auto flex items-center justify-between p-4">
+      <img src="assets/LOGO.png" alt="Jippy" class="w-[64px] h-[64px]">
+      <nav class="flex gap-10 items-center">
+  <a href="menu.html" class="bg-[#FDE7A1] px-4 py-1 rounded-lg font-medium border border-black">Dashboard</a>
+  <a href="preorder.html" class="text-black font-medium cursor-pointer hover:bg-[#fff2c9] hover:text-black rounded-lg transition duration-300 px-4 py-1">Pre-Order</a>
+  <a href="#" class="text-black font-medium cursor-pointer hover:bg-[#fff2c9] hover:text-black rounded-lg transition duration-300 px-4 py-1">My Order</a>
+  <a href="#" class="text-black font-medium cursor-pointer hover:bg-[#fff2c9] hover:text-black rounded-lg transition duration-300 px-4 py-1">Live Chat</a>
+</nav>
+      <div class="flex gap-4 items-center">
+        <button><img src="assets/notif.png" alt="Notifikasi" class="w-[22px]"></button>
+        <button><img src="assets/profil.png" alt="Akun" class="w-[24px]"></button>
+      </div>
     </div>
-
-     <nav>
-      <a href="#" class="active">Dashboard</a>
-      <a href="preorder.html">Pre-Order</a>
-      <a href="#">My Order</a>
-      <a href="#">Live Chat</a>
-    </nav>
-
-     <div class="right-icons">
-        <img src="assets/lonceng-profil.png" alt="Notification Icon" />
-    </div>
-  </div>
+  </header>
   
-  <div class="bottom-nav">
+     <div class="bottom-nav">
    <div class="bottom-nav">
   <div class="hamburger" aria-label="Menu" role="button" tabindex="0" onclick="toggleSidebar()">
     <span></span>
@@ -41,7 +39,7 @@
     <li>
       <div class="menu-title" onclick="toggleDropdown('beauty')">Korean Beauty ▾</div>
       <ul class="submenu" id="beauty">
-        <li><a href="#">Skincare</a></li>
+        <li><a href="menu2.html">Skincare</a></li>
         <li><a href="#">Makeup</a></li>
         <li><a href="#">Body Care</a></li>
         <li><a href="#">Hair Care</a></li>
@@ -84,7 +82,6 @@
     </li>
   </ul>
 </div>
-
   <div class="search-container">
   <input type="text" class="search-input" placeholder="Search product" />
   <img src="assets/search.png" alt="Search" class="search-icon" />
@@ -183,7 +180,7 @@
         <a href="#">Terms of Use</a>
         <a href="#">Privacy Policy</a>
         <a href="#">Agreement</a>
-      </div>
+       </div>
     </div>
   </footer>
   <script src="menu.js"></script>
