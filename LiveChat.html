@@ -15,8 +15,8 @@
     <div class="max-w-7xl  mx-auto flex items-center justify-between p-4">
       <img src="assets/LOGO.png" alt="Jippy" class="w-[64px] h-[64px]">
       <nav class="flex gap-10 items-center">
-        <a href="#" class="text-black font-medium cursor-pointer hover:bg-[#fff2c9] hover:text-black rounded-lg transition duration-300 px-4 py-1">Dashboard</a>
-        <a href="#" class="text-black font-medium cursor-pointer hover:bg-[#fff2c9] hover:text-black rounded-lg transition duration-300 px-4 py-1">Pre Order</a>
+        <a href="menu.html" class="text-black font-medium cursor-pointer hover:bg-[#fff2c9] hover:text-black rounded-lg transition duration-300 px-4 py-1">Dashboard</a>
+        <a href="#" class="text-black font-medium cursor-pointer hover:bg-[#fff2c9] hover:text-black rounded-lg transition duration-300 px-4 py-1">Pre-Order</a>
         <a href="#" class="text-black font-medium cursor-pointer hover:bg-[#fff2c9] hover:text-black rounded-lg transition duration-300 px-4 py-1">My Order</a>
         <a href="#" class="bg-[#FDE7A1] px-4 py-1 rounded-lg font-medium border border-black">Live Chat</a>
       </nav>
@@ -29,23 +29,20 @@
 
   <style>
     :root {
-            /* Palet Warna */
-            --primary-purple: #fcfcfc; /* Ungu utama untuk tombol kirim, dll. */
-            --light-purple-bubble: #fcfcfc; /* Ungu muda untuk bubble chat bot (sebelum diubah ke putih) */
-            --accent-yellow: #FFD700; /* Kuning aksen (jika ada) */
-            --text-dark: #000000; /* Warna teks gelap utama */
-            --text-light: #050505; /* Warna teks abu-abu terang (untuk placeholder, waktu) */
-            --border-color: #000000; /* Warna border umum (abu-abu terang) */
-            --bg-light-gray: #F8F8F8; /* Warna latar belakang body atau elemen ringan */
-            --bg-white: #fffefe; /* Warna putih murni untuk background chat box atau bubble tertentu */
-            --user-bubble-bg: #ffffff; /* Warna abu-abu terang untuk bubble chat user */
-            --padding-default: 1rem; /* 16px */
+            /*Palet Warna*/
+            --primary-purple: #fcfcfc; /* warna untuk tombol bg voice */
+            --light-purple-bubble: #fcfcfc; /* warna untuk bubble chat bot  */
+            --text-dark: #000000; 
+            --border-color: #000000; 
+            --bg-light-gray: #F8F8F8; 
+            --bg-white: #fffefe; 
+            --user-bubble-bg: #ffffff; 
             --margin-default: 1rem; /* 16px */
             --border-radius-default: 20px;
             --border-radius-small: 5px;
         }
 
-    /* Title */
+    /* Title "Live Chat" */
     .chat-title {
     text-align: center;
     margin-top: 30px;
@@ -97,47 +94,47 @@
     }
 
 
-  .messages {
-    flex-grow: 1; 
-    display: flex; 
-    flex-direction: column; 
-    gap: 0.8rem;  
-    padding-right: 10px; 
-    padding-bottom: 1rem;
-    border-top: 1px solid var(--border-color);
-    padding-top: 1rem;
-  }
+    .messages {
+      flex-grow: 1; 
+      display: flex; 
+      flex-direction: column; 
+      gap: 0.8rem;  
+      padding-right: 10px; 
+      padding-bottom: 1rem;
+      border-top: 1px solid var(--border-color);
+      padding-top: 1rem;
+    }
 
-  .message-content {
-    max-width: 75%; 
-    padding: 0.8rem 1.2rem; 
-    border-radius: 15px; 
-    font-size: 0.95rem;
-    line-height: 1.4;
-    word-wrap: break-word; 
-    box-shadow: 0 1px 2px rgba(0,0,0,0.08); 
-    font-weight: 600;
-  }
+    .message-content {
+      max-width: 75%; 
+      padding: 0.8rem 1.2rem; 
+      border-radius: 15px; 
+      font-size: 0.95rem;
+      line-height: 1.4;
+      word-wrap: break-word; 
+      box-shadow: 0 1px 2px rgba(0,0,0,0.08); 
+      font-weight: 600;
+    }
 
-  .message-wrapper.received .message-content {
-    background-color: var(--bg-white); 
-    color: var(--text-dark); 
-    border-bottom-left-radius: 5px; 
-    border: 1px solid var(--border-color);
-  }
+    .message-wrapper.received .message-content {
+      background-color: var(--bg-white); 
+      color: var(--text-dark); 
+      border-bottom-left-radius: 5px; 
+      border: 1px solid var(--border-color);
+    }
 
-  .message-wrapper.sent .message-content {
-    background-color: var(--user-bubble-bg); 
-    color: var(--text-dark); 
-    border-bottom-right-radius: 5px var(--border-color); 
-    border: 1px solid var(--border-color);
-  }
+    .message-wrapper.sent .message-content {
+      background-color: var(--user-bubble-bg); 
+      color: var(--text-dark); 
+      border-bottom-right-radius: 5px var(--border-color); 
+      border: 1px solid var(--border-color);
+    }
 
-  .message-wrapper {
-    display: flex; 
-    flex-direction: column; 
-    margin-bottom: 2rem;
-}
+    .message-wrapper {
+      display: flex; 
+      flex-direction: column; 
+      margin-bottom: 2rem;
+    }
 
 /* ===== CONTAINER UNTUK GELEMBUNG PESAN SAJA ===== */
 .message-bubble {
@@ -170,25 +167,28 @@
     text-align: left; 
 }
 
-/* ===== ISI GELEMBUNG PESAN (TEXT) ===== */
+/* ===== Isi Pesan (TEXT) ===== */
 .message-content {
-    max-width: 75%; 
-    padding: 0.8rem 1.2rem;
-    border-radius: 24.5px;
-    font-size: 0.95rem;
-    line-height: 1.4;
-    word-wrap: break-word; 
+  max-width: 75%;
+  padding: 0.8rem 1.2rem;
+  border-radius: 25px; 
+  font-size: 0.95rem;
+  line-height: 1.4;
+  word-wrap: break-word;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  font-weight: 600;
 }
 
 .message-wrapper.received .message-content {
     background-color: var(--light-purple-bubble); 
     color: var(--text-dark);
-    gap: 0.8rem;
+    border: 1px solid var(--border-color);
 }
 
 .message-wrapper.sent .message-content {
     background-color: var(--user-bubble-bg); 
     color: var(--text-dark); 
+    border: 1px solid var(--border-color);
 }
 
   .message-input {
@@ -198,34 +198,34 @@
 
   .message-input input[type="text"] {
     width: 100%; 
-    padding: 1rem 3.5rem 1rem 1.5rem; /* Padding: atas, kanan (ruang ikon), bawah, kiri */
-    border-radius: 25px; /* Radius yang lebih besar untuk bentuk kapsul */
+    padding: 1rem 3.5rem 1rem 1.5rem; 
+    border-radius: 25px; 
     font-size: 1rem;
-    background-color: white; /* Warna putih */
-    color: var(--text-dark); /* Warna teks input */
-    box-sizing: border-box; /* Memastikan padding tidak menambah lebar */
+    background-color: white; 
+    color: var(--text-dark); 
+    box-sizing: border-box; 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
 
   .message-input input[type="text"]::placeholder {
-    color: var(--text-light); /* Warna placeholder */
+    color: var(--text-light); 
   }
 
-  /* Wrapper untuk ikon yang berada di dalam input field */
+  /* Wrapper untuk ikon yang berada di dalam input "type your message" */
   .input-icons {
     position: absolute; /* Posisi absolut di dalam .message-input */
-    right: 15px; /* Jarak dari kanan input field */
-    top: 50%; /* Posisikan vertikal di tengah */
-    transform: translateY(-50%); /* Penyesuaian presisi vertikal */
+    right: 15px; 
+    top: 50%; 
+    transform: translateY(-50%); 
     display: flex;
     gap: 0.8rem; /* Jarak antar ikon (Hyperlink dan Kamera) */
   }
 
   .input-icons img {
-    width: 20px; /* Ukuran ikon */
+    width: 20px; 
     height: 20px;
     cursor: pointer;
-    opacity: 0.7; /* Sedikit transparansi */
+    opacity: 0.7; 
     transition: opacity 0.2s ease; /* Efek transisi saat hover */
   }
 
@@ -233,22 +233,22 @@
     opacity: 1; /* Ikon lebih terang saat hover */
   }
 
-  /* Tombol Kirim (Ikon Voice/Microphone) */
+  /* Ikon Voice/Microphone */
   .send-button {
-    width: 48px; /* Ukuran tombol bulat */
+    width: 48px; 
     height: 48px;
     border-radius: 50%; /* Membuat bulat */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     background-color: var(--primary-purple); 
     display: flex;
-    justify-content: center; /* Tengah secara horizontal */
-    align-items: center; /* Tengah secara vertikal */
+    justify-content: center; 
+    align-items: center; 
     cursor: pointer;
     flex-shrink: 0; /* Mencegah tombol mengecil pada layar sempit */
   }
 
   .send-button img {
-    width: 24px; /* Ukuran ikon microphone di tombol */
+    width: 24px; 
     height: 24px
   }
 
@@ -395,7 +395,6 @@
     </div>
 
         <div class="suggestions">
-          <button>Halo,Min!</button>
           <button>Kendala Checkout Pesanan</button>
           <button>Informasi Jasa Kirim</button>
           <button>Cara Pembayaran</button>
@@ -471,28 +470,27 @@
   </style>
 
   <!-- ===== FOOTER ===== -->
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-left">
-          <img src="assets/LOGO.png" alt="Jippy" />
-          <p>©️ Jippy 2025 - All Rights Reserved</p>
+  <footer class="bg-[#FF96B5] py-4">
+    <div class="max-w-6xl container mx-auto text-sm text-white">
+      <div class="flex justify-between items-center">
+        <div class="flex item-center py-4 space-x-4">
+            <img src="assets/LOGO.png" alt="Jippy" class="w-[35px] h-[35px]">
+            <p class="mt-4 text-xs">© Jippy 2025 - All Rights Reserved</p>
         </div>
-        <div class="footer-right">
-          <div class="footer-links">
-            <p>Home</p>
-            <p>About Us</p>
-            <p>Contact Person</p>
-          </div>
-          <div class="footer-sub-links">
-            <p>Terms of Use</p>
-            <p>Privacy Policy</p>
-            <p>Agreement</p>
-          </div>
+        <div class="flex flex-col items-end space-y-3">
+            <span class="flex gap-7 text-right text-md">
+                <a href="#" class="hover:underline cursor-pointer">Home</a>
+                <a href="#" class="hover:underline cursor-pointer">About Us</a>
+                <a href="#" class="hover:underline cursor-pointer">Contact Person</a>
+            </span>
+            <span class="flex gap-4 text-xs">
+                <p>Terms of Use</p>
+                <p>Privacy Policy</p>
+                <p>Agreement</p>
+            </span>
         </div>
       </div>
     </div>
   </footer>
-
 </body>
 </html>
