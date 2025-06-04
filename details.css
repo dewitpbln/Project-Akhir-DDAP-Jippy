@@ -1,4 +1,3 @@
-
    .search-container {
     margin-right: 83px;
     margin-top: 2%;
@@ -22,7 +21,6 @@
     height: 18px;
     cursor: pointer;
   }
-  
   .bottom-nav {
     display: flex;
     align-items: center;
@@ -97,7 +95,7 @@
 
  .container {
    display: flex;
-   padding: 40px;
+   padding: 40px 0px 40px 67px;
    gap: 40px;
   }
 
@@ -106,7 +104,7 @@
   }
 
   .main-image {
-    max-width: 435px;
+    max-width: 436px;
     border-radius: 12px;
     border: 1px solid #ccc;
   }
@@ -165,11 +163,11 @@
     flex-direction: column; 
   }
   .order-box {
-    margin-left: auto;
+    margin-right: -57px;
+    flex: 1;
     padding: 12px;
     background-color: #e3f2fd;
-    border-radius: 12px;
-    height: 100%;     
+    border-radius: 12px;  
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   }
   .order-box label {
@@ -206,7 +204,7 @@
   .buy-now-btn:hover {
     background-color: #00a6d6;
   }
-  
+
 .main-footer {
     background-color: #FF96B5; 
     padding: 2rem 1rem; 
@@ -277,3 +275,61 @@
 .footer-links-secondary p {
     margin: 0; 
 }
+
+  .footer {
+      background-color: #fc8ead;
+      color: white;
+      padding: 30px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      
+    }
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 14px;
+    }
+    .footer-left img {
+      width: 50px;
+      height: auto;
+    }
+   
+    .footer-right .main-menu {
+      display: flex;
+      gap: 70px;
+      margin-bottom: 20px;
+      margin-left: 20px;
+    }
+    .footer-right .sub-menu {
+      display: flex;
+      gap: 40px;
+      font-size: 14px;
+      margin-left: 60px;
+    }
+    .footer-right a {
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .footer-right a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 600px) {
+      .footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+      .footer-right {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .footer-right .main-menu,
+      .footer-right .sub-menu {
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+    }
