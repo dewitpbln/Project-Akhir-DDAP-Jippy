@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="details.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Korean Shop - New Arrivals</title>
 <body>
-  <div class="header-container">
-  <div class="top-nav">
-    <div class="logo">
-      <img src="assets/LOGO.png" alt="JIPPY Logo" />
+<header class="bg-white shadow">
+    <div class="max-w-7xl  mx-auto flex items-center justify-between p-4">
+      <img src="assets/LOGO.png" alt="Jippy" class="w-[64px] h-[64px]">
+      <nav class="flex gap-10 items-center">
+        <a href="menu.html" class="bg-[#FDE7A1] px-4 py-1 rounded-lg font-medium border border-black">Dashboard</a>
+        <a href="preorder.html" class="text-black font-medium cursor-pointer hover:bg-[#fff2c9] hover:text-black rounded-lg transition duration-300 px-4 py-1">Pre-Order</a>
+        <a href="#" class="text-black font-medium cursor-pointer hover:bg-[#fff2c9] hover:text-black rounded-lg transition duration-300 px-4 py-1">My Order</a>
+        <a href="#" class="text-black font-medium cursor-pointer hover:bg-[#fff2c9] hover:text-black rounded-lg transition duration-300 px-4 py-1">Live Chat</a>
+      </nav>
+      <div class="flex gap-4 items-center">
+        <button><img src="assets/notif.png" alt="Notifikasi" class="w-[22px]"></button>
+        <button><img src="assets/profil.png" alt="Akun" class="w-[24px]"></button>
+      </div>
     </div>
-
-     <nav>
-      <a href="#" class="active">Dashboard</a>
-      <a href="#">Pre-Order</a>
-      <a href="#">My Order</a>
-      <a href="#">Live Chat</a>
-    </nav>
-
-     <div class="right-icons">
-        <img src="assets/lonceng-profil.png" alt="Notification Icon" />
-    </div>
-  </div>
+  </header>
   
   <div class="bottom-nav">
    <div class="bottom-nav">
@@ -102,7 +101,6 @@
   </div>
 
   <div class="right-section">
-   
     <div class="product-info">
       <h1>Numbuzin Pantothenic Active Shooting Cream</h1>
       <div class="rating">
@@ -155,6 +153,25 @@
                 <p>Privacy Policy</p>
                 <p>Agreement</p>
             </div>
+
+ <footer class="bg-[#FF96B5] py-4">
+    <div class="max-w-6xl container mx-auto text-sm text-white">
+      <div class="flex justify-between items-center">
+        <div class="flex item-center py-4 space-x-4">
+            <img src="assets/LOGO.png" alt="Jippy" class="w-[35px] h-[35px]">
+            <p class="mt-4 text-xs">© Jippy 2025 - All Rights Reserved</p>
+        </div>
+        <div class="flex flex-col items-end space-y-3">
+            <span class="flex gap-7 text-right text-md">
+                <a href="#" class="hover:underline cursor-pointer">Home</a>
+                <a href="#" class="hover:underline cursor-pointer">About Us</a>
+                <a href="#" class="hover:underline cursor-pointer">Contact Person</a>
+            </span>
+            <span class="flex gap-4 text-xs">
+                <p>Terms of Use</p>
+                <p>Privacy Policy</p>
+                <p>Agreement</p>
+            </span>
         </div>
       </div>
     </div>
